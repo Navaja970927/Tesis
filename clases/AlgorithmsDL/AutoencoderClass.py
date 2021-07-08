@@ -5,13 +5,26 @@ import seaborn as sns
 from pylab import rcParams
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from keras.models import Model, load_model
+from keras.models import Model
 from keras.layers import Input, Dense
 from keras.callbacks import ModelCheckpoint, TensorBoard
 from keras import regularizers
 from sklearn import metrics
 import matplotlib.gridspec as gridspec
+from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 
+
+def AE(ip):
+
+    AEModel = []
+
+    AEModel.append(('AE IMBALANCE', ip.X_train, ip.y_train, ip.X_test, ip.y_test))
+    AEModel.append(('AE UNDERSAMPLE', ip.X_train_under, ip.y_train_under, ip.X_test_under, ip.y_test_under))
+    AEModel.append(('AE OVERSAMPLE', ip.X_train_over, ip.y_train_over, ip.X_test_over, ip.y_test_over))
+    AEModel.append(('AE SMOTE', ip.X_train_smote, ip.y_train_smote, ip.X_test_smote, ip.y_test_smote))
+    AEModel.append(('AE ADASYN', ip.X_train_adasyn, ip.y_train_adasyn, ip.X_test_adasyn, ip.y_test_adasyn))
+
+    return AEModel
 
 class AutoencoderClass:
     sns.set(style='whitegrid', palette='muted', font_scale=1.5)

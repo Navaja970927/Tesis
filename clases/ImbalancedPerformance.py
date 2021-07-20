@@ -6,10 +6,11 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 from sklearn.model_selection import train_test_split
 import keras.backend as K
+from keras.optimizers import SGD
 from keras import Sequential
 from keras.models import Model
 from keras.callbacks import ModelCheckpoint, TensorBoard
-from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization
+from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization, GaussianNoise
 from keras.layers import Conv1D
 import matplotlib.pyplot as plt
 from sklearn import metrics
@@ -17,6 +18,8 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from pylab import rcParams
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler
 
 
 class ImbalancedPerformanceClass:
@@ -202,12 +205,12 @@ class ImbalancedPerformanceClass:
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
-            print("Model Name :", name)
-            print('Test Accuracy :{0:0.5f}'.format(Accuracy_test))
-            print('Test AUC : {0:0.5f}'.format(Aucs_test))
-            print('Test Precision : {0:0.5f}'.format(Precision_score_test))
-            print('Test Recall : {0:0.5f}'.format(Recall_score_test))
-            print('Test F1 : {0:0.5f}'.format(F1Score_test))
+            print("Model Name : ", name)
+            print('Test Accuracy : '.format(Accuracy_test))
+            print('Test AUC : '.format(Aucs_test))
+            print('Test Precision : '.format(Precision_score_test))
+            print('Test Recall : '.format(Recall_score_test))
+            print('Test F1 : '.format(F1Score_test))
             # print('Confusion Matrix : \n', cnf_matrix)
             print("\n")
 
@@ -249,71 +252,147 @@ class ImbalancedPerformanceClass:
         for name, X_train, y_train, X_test, y_test in model:
             # appending name
             self.names.append(name)
+            X_train = np.nan_to_num(X_train)
+            y_train = np.nan_to_num(y_train)
+            X_test = np.nan_to_num(X_test)
+            y_test = np.nan_to_num(y_test)
 
             # Build model
             input_dim = X_train.shape[1]
             encoding_dim = 14
             input_layer = Input(shape=(input_dim,))
-            encoder = Dense(encoding_dim, activation="tanh",
-                            activity_regularizer=keras.regularizers.l1(10e-5))(input_layer)
+            encoder = Dense(encoding_dim, activation="relu")(input_layer)
             encoder = Dense(int(encoding_dim / 2), activation="relu")(encoder)
-            decoder = Dense(int(encoding_dim / 2), activation='tanh')(encoder)
-            decoder = Dense(input_dim, activation='relu')(decoder)
+            encoder = Dropout(0.2)(encoder)
+            encoder = Dense(1, activation="relu")(encoder)
+            decoder = Dropout(0.5)(encoder)
+            decoder = Dense(int(encoding_dim / 2), activation='relu')(decoder)
+            decoder = Dense(input_dim, activation='sigmoid')(decoder)
+
             autoencoder = Model(inputs=input_layer, outputs=decoder)
-            nb_epoch = 1
+            nb_epoch = 100
             batch_size = 32
-            autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
-            checkpointer = ModelCheckpoint(filepath="model.h5", verbose=0, save_best_only=True)
-            tensorboard = TensorBoard(log_dir='.\logs', histogram_freq=0, write_graph=True, write_images=True)
-            history = autoencoder.fit(X_train, X_train, epochs= nb_epoch, batch_size= batch_size, shuffle=True,
-                                      validation_data=(X_test, X_test), verbose=1,
-                                      callbacks=[checkpointer, tensorboard]).history
+            autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy', metrics=['accuracy'])
+            autoencoder.fit(X_train, X_train, epochs=nb_epoch, batch_size=batch_size, shuffle=True,
+                            validation_data=(X_test, X_test))
 
             # predictions
             self.y_test_pred = autoencoder.predict(X_test)
 
             # calculate accuracy
-            Accuracy_test = keras.metrics.binary_accuracy(y_test, self.y_test_pred)
+            mse = np.mean(np.power(X_test - self.y_test_pred, 2), axis=1)
+            error_df = pd.DataFrame({'reconstruction_error': mse, 'true_class': self.y_test})
+            fpr, tpr, thresholds = metrics.roc_curve(self.y_test, mse)
+            Accuracy_test = metrics.auc(fpr, tpr)
             self.accuracy_tests.append(Accuracy_test)
 
             # calculate auc
-            Aucs_test = keras.metrics.AUC(num_thresholds=10)
-            y_test = y_test.reshape(y_test.shape[0], 1)
-            Aucs_test.update_state(y_test, self.y_test_pred)
-            Aucs_test = Aucs_test.result()
-            self.aucs_tests.append(Aucs_test)
+            self.aucs_tests.append(Accuracy_test)
 
             # precision_calculation
-            Precision_score_test = keras.metrics.Precision()
-            Precision_score_test.update_state(y_test, self.y_test_pred)
-            Precision_score_test = Precision_score_test.result()
+            precision, recall, th = metrics.precision_recall_curve(error_df.true_class, error_df.reconstruction_error)
+            Precision_score_test = np.mean(precision)
             self.precision_tests.append(Precision_score_test)
 
             # calculate recall
-            Recall_score_test = keras.metrics.Recall()
-            Recall_score_test.update_state(y_test, self.y_test_pred)
-            Recall_score_test = Recall_score_test.result()
+            Recall_score_test = np.mean(recall)
             self.recall_tests.append(Recall_score_test)
 
             # calculating F1
             F1Score_test = 2*(Precision_score_test*Recall_score_test)/(Precision_score_test+Recall_score_test+K.epsilon())
-            self.f1_score_tests.append(format(F1Score_test))
+            self.f1_score_tests.append(F1Score_test)
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
             print("Model Name :", name)
-            print('Test Accuracy :{0:0.5f}'.format(Accuracy_test))
-            print('Test AUC : {0:0.5f}'.format(Aucs_test))
-            print('Test Precision : {0:0.5f}'.format(Precision_score_test))
-            print('Test Recall : {0:0.5f}'.format(Recall_score_test))
-            print('Test F1 : {0:0.5f}'.format(F1Score_test))
+            print('Test Accuracy : ' + str(Accuracy_test))
+            print('Test AUC : ' + str(Accuracy_test))
+            print('Test Precision : ' + str(Precision_score_test))
+            print('Test Recall : ' + str(Recall_score_test))
+            print('Test F1 : ' + str(F1Score_test))
             # print('Confusion Matrix : \n', cnf_matrix)
             print("\n")
 
-            fpr, tpr, thresholds = metrics.roc_curve(y_test, self.y_test_pred)
-            auc = metrics.roc_auc_score(y_test, self.y_test_pred)
-            plt.plot(fpr, tpr, linewidth=2, label=name + ", auc=" + str(auc))
+            plt.plot(fpr, tpr, linewidth=2, label=name + ", auc=" + str(Accuracy_test))
+
+        plt.legend(loc=4)
+        plt.plot([0, 1], [0, 1], 'k--')
+        plt.rcParams['font.size'] = 12
+        plt.title('ROC curve')
+        plt.xlabel('False Positive Rate (1 - Specificity)')
+        plt.ylabel('True Positive Rate (Sensitivity)')
+        plt.show()
+
+    def performanceDAE(self, model):
+        sns.set(style='whitegrid', palette='muted', font_scale=1.5)
+        rcParams['figure.figsize'] = 14, 8
+        RANDOM_SEED = 42
+        LABELS = ["Normal", "Fraud"]
+        for name, X_train, y_train, X_test, y_test in model:
+            # appending name
+            self.names.append(name)
+            X_train = np.nan_to_num(X_train)
+            y_train = np.nan_to_num(y_train)
+            X_test = np.nan_to_num(X_test)
+            y_test = np.nan_to_num(y_test)
+
+            # build model
+            input_dim = X_train.shape[1]
+            encoding_dim = 14
+            input_layer = Input(shape=(input_dim,))
+            encoder = GaussianNoise(0.2)(input_layer)
+            encoder = Dense(encoding_dim, activation="relu")(encoder)
+            encoder = Dense(int(encoding_dim / 2), activation="relu")(encoder)
+            encoder = Dense(1, activation='relu')(encoder)
+            decoder = Dense(int(encoding_dim / 2), activation='relu')(encoder)
+            decoder = Dense(input_dim, activation='sigmoid')(decoder)
+
+            denoising = Model(inputs=input_layer, outputs=decoder)
+            denoising.compile(loss='binary_crossentropy', optimizer=SGD(lr=0.5))
+            denoising.fit(X_train, X_train, epochs=100, validation_data=(X_test, X_test))
+
+            # predictions
+            self.y_test_pred = denoising.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
+
+            # calculate accuracy
+            mse = np.mean(np.power(X_test - self.y_test_pred, 2), axis=1)
+            error_df = pd.DataFrame({'reconstruction_error': mse, 'true_class': self.y_test})
+            fpr, tpr, thresholds = metrics.roc_curve(self.y_test, mse)
+            Accuracy_test = metrics.auc(fpr, tpr)
+            self.accuracy_tests.append(Accuracy_test)
+
+            # calculate auc
+            self.aucs_tests.append(Accuracy_test)
+
+            # precision_calculation
+            precision, recall, th = metrics.precision_recall_curve(error_df.true_class, error_df.reconstruction_error)
+            Precision_score_test = np.mean(precision)
+            self.precision_tests.append(Precision_score_test)
+
+            # calculate recall
+            Recall_score_test = np.mean(recall)
+            self.recall_tests.append(Recall_score_test)
+
+            # calculating F1
+            F1Score_test = 2 * (Precision_score_test * Recall_score_test) / (
+                        Precision_score_test + Recall_score_test + K.epsilon())
+            self.f1_score_tests.append(F1Score_test)
+
+            # draw confusion matrix (have troubles)
+            # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
+
+            print("Model Name :", name)
+            print('Test Accuracy : ' + str(Accuracy_test))
+            print('Test AUC : ' + str(Accuracy_test))
+            print('Test Precision : ' + str(Precision_score_test))
+            print('Test Recall : ' + str(Recall_score_test))
+            print('Test F1 : ' + str(F1Score_test))
+            # print('Confusion Matrix : \n', cnf_matrix)
+            print("\n")
+
+            plt.plot(fpr, tpr, linewidth=2, label=name + ", auc=" + str(Accuracy_test))
 
         plt.legend(loc=4)
         plt.plot([0, 1], [0, 1], 'k--')

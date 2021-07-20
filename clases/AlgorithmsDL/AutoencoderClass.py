@@ -11,7 +11,6 @@ from keras.callbacks import ModelCheckpoint, TensorBoard
 from keras import regularizers
 from sklearn import metrics
 import matplotlib.gridspec as gridspec
-from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 
 
 def AE(ip):

@@ -7,6 +7,7 @@ from clases.AlgorithmsML.XGBoost import XGB
 from clases.AlgorithmsML.KNearestNeighbor import KNN
 from clases.AlgorithmsDL.ConvolutionNeuralNetworkClass import CNN
 from clases.AlgorithmsDL.AutoencoderClass import AE
+from clases.AlgorithmsDL.DenoisingAutoencoderClass import DAE
 from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 
 ip = ImbalancedPerformanceClass()
@@ -34,7 +35,13 @@ def AutoEncoder(ip):
     return ip
 
 
+def DenoisingAutoencoder(ip):
+    ip.performanceDAE(DAE(ip))
+    return ip
+
+
 # ip = ML_test(ip)
 # ip = ConvolutionNeuralNetwork(ip)
-ip = AutoEncoder(ip)
-# print(ip.show_comparison())
+# ip = AutoEncoder(ip)
+# ip = DenoisingAutoencoder(ip)
+print(ip.show_comparison())

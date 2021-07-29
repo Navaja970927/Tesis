@@ -8,6 +8,10 @@ from clases.AlgorithmsML.KNearestNeighbor import KNN
 from clases.AlgorithmsDL.ConvolutionNeuralNetworkClass import CNN
 from clases.AlgorithmsDL.AutoencoderClass import AE
 from clases.AlgorithmsDL.DenoisingAutoencoderClass import DAE
+from clases.AlgorithmsDL.RestrictedBoltzmanMachineClass import RBM
+from clases.AlgorithmsDL.RecurrentNeuralNetworkClass import RNN
+from clases.AlgorithmsDL.LongShortTermMemoryClass import LSTM
+from clases.AlgorithmsDL.BackpropagationNeuralNetworkClass import BNN
 from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 
 ip = ImbalancedPerformanceClass()
@@ -25,6 +29,14 @@ def ML_test(ip):
     return ip
 
 
+def DL_test(ip):
+    # Crear los modelos a utilizar
+    ip.performanceCNN(CNN(ip))
+    ip.performanceAE(AE(ip))
+    ip.performanceDAE(DAE(ip))
+    ip.performanceRBM(RBM(ip))
+
+
 def ConvolutionNeuralNetwork(ip):
     ip.performanceCNN(CNN(ip))
     return ip
@@ -40,8 +52,32 @@ def DenoisingAutoencoder(ip):
     return ip
 
 
+def RestrictedBoltzmanMachine(ip):
+    ip.performanceRBM(RBM(ip))
+    return ip
+
+
+def RecurrentNeuralNetwork(ip):
+    ip.performanceRNN(RNN(ip))
+    return ip
+
+
+def LongShortTermMemory(ip):
+    ip.performanceLSTM(LSTM(ip))
+    return ip
+
+
+def BackpropagationNeuralNetwork(ip):
+    ip.performanceBNN(BNN(ip))
+    return ip
+
+
 # ip = ML_test(ip)
 # ip = ConvolutionNeuralNetwork(ip)
 # ip = AutoEncoder(ip)
 # ip = DenoisingAutoencoder(ip)
+# ip = RecurrentNeuralNetwork(ip)
+# ip = LongShortTermMemory(ip)
+# ip = RestrictedBoltzmanMachine(ip)
+ip = BackpropagationNeuralNetwork(ip)
 print(ip.show_comparison())

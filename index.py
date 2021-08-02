@@ -11,7 +11,7 @@ from clases.AlgorithmsDL.DenoisingAutoencoderClass import DAE
 from clases.AlgorithmsDL.RestrictedBoltzmanMachineClass import RBM
 from clases.AlgorithmsDL.RecurrentNeuralNetworkClass import RNN
 from clases.AlgorithmsDL.LongShortTermMemoryClass import LSTM
-from clases.AlgorithmsDL.BackpropagationNeuralNetworkClass import BNN
+from clases.AlgorithmsDL.BackpropagationNeuralNetworkClass import BPNN
 from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 
 ip = ImbalancedPerformanceClass()
@@ -35,6 +35,10 @@ def DL_test(ip):
     ip.performanceAE(AE(ip))
     ip.performanceDAE(DAE(ip))
     ip.performanceRBM(RBM(ip))
+    ip.performanceRNN(RNN(ip))
+    ip.performanceLSTM(LSTM(ip))
+    ip.performanceBPNN(BPNN(ip))
+    return ip
 
 
 def ConvolutionNeuralNetwork(ip):
@@ -68,16 +72,17 @@ def LongShortTermMemory(ip):
 
 
 def BackpropagationNeuralNetwork(ip):
-    ip.performanceBNN(BNN(ip))
+    ip.performanceBPNN(BPNN(ip))
     return ip
 
 
-# ip = ML_test(ip)
+ip = ML_test(ip)
 # ip = ConvolutionNeuralNetwork(ip)
 # ip = AutoEncoder(ip)
 # ip = DenoisingAutoencoder(ip)
 # ip = RecurrentNeuralNetwork(ip)
 # ip = LongShortTermMemory(ip)
 # ip = RestrictedBoltzmanMachine(ip)
-ip = BackpropagationNeuralNetwork(ip)
+# ip = BackpropagationNeuralNetwork(ip)
+ip = DL_test(ip)
 print(ip.show_comparison())

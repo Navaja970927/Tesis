@@ -116,7 +116,7 @@ class ImbalancedPerformanceClass:
 
             # calculating F1
             F1Score_test = metrics.f1_score(y_test, self.y_test_pred)
-            self.f1_score_tests.append(format(F1Score_test))
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix
             cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -203,7 +203,7 @@ class ImbalancedPerformanceClass:
 
             # calculating F1
             F1Score_test = 2*(Precision_score_test*Recall_score_test)/(Precision_score_test+Recall_score_test+K.epsilon())
-            self.f1_score_tests.append(format(F1Score_test))
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -273,7 +273,7 @@ class ImbalancedPerformanceClass:
             decoder = Dense(input_dim, activation='sigmoid')(decoder)
 
             autoencoder = Model(inputs=input_layer, outputs=decoder)
-            nb_epoch = 100
+            nb_epoch = 20
             batch_size = 32
             autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy', metrics=['accuracy'])
             autoencoder.fit(X_train, X_train, epochs=nb_epoch, batch_size=batch_size, shuffle=True,
@@ -281,6 +281,7 @@ class ImbalancedPerformanceClass:
 
             # predictions
             self.y_test_pred = autoencoder.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
 
             # calculate accuracy
             mse = np.mean(np.power(X_test - self.y_test_pred, 2), axis=1)
@@ -294,16 +295,18 @@ class ImbalancedPerformanceClass:
 
             # precision_calculation
             precision, recall, th = metrics.precision_recall_curve(error_df.true_class, error_df.reconstruction_error)
-            Precision_score_test = np.mean(precision)
+            s = np.count_nonzero(precision)
+            Precision_score_test = np.sum(precision) / s
             self.precision_tests.append(Precision_score_test)
 
             # calculate recall
-            Recall_score_test = np.mean(recall)
+            s = np.count_nonzero(recall)
+            Recall_score_test = np.sum(recall) / s
             self.recall_tests.append(Recall_score_test)
 
             # calculating F1
             F1Score_test = 2*(Precision_score_test*Recall_score_test)/(Precision_score_test+Recall_score_test+K.epsilon())
-            self.f1_score_tests.append(F1Score_test)
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -353,7 +356,7 @@ class ImbalancedPerformanceClass:
 
             denoising = Model(inputs=input_layer, outputs=decoder)
             denoising.compile(loss='binary_crossentropy', optimizer=SGD(lr=0.5))
-            denoising.fit(X_train, X_train, epochs=100, validation_data=(X_test, X_test))
+            denoising.fit(X_train, X_train, epochs=20, validation_data=(X_test, X_test))
 
             # predictions
             self.y_test_pred = denoising.predict(X_test)
@@ -371,17 +374,19 @@ class ImbalancedPerformanceClass:
 
             # precision_calculation
             precision, recall, th = metrics.precision_recall_curve(error_df.true_class, error_df.reconstruction_error)
-            Precision_score_test = np.mean(precision)
+            s = np.count_nonzero(precision)
+            Precision_score_test = np.sum(precision)/s
             self.precision_tests.append(Precision_score_test)
 
             # calculate recall
-            Recall_score_test = np.mean(recall)
+            s = np.count_nonzero(recall)
+            Recall_score_test = np.sum(recall)/s
             self.recall_tests.append(Recall_score_test)
 
             # calculating F1
             F1Score_test = 2 * (Precision_score_test * Recall_score_test) / (
                         Precision_score_test + Recall_score_test + K.epsilon())
-            self.f1_score_tests.append(F1Score_test)
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -409,21 +414,17 @@ class ImbalancedPerformanceClass:
         for name, X_train, y_train, X_test, y_test in model:
             # appending name
             self.names.append(name)
-            X_train = np.nan_to_num(X_train)
-            y_train = np.nan_to_num(y_train)
-            X_test = np.nan_to_num(X_test)
-            y_test = np.nan_to_num(y_test)
 
             # build model
-            rbm = BernoulliRBM(n_components=200, n_iter=40, learning_rate=0.001,  verbose=True)
+            rbm = BernoulliRBM(n_components=200, n_iter=20, learning_rate=0.001,  verbose=True)
             logistic = LogisticRegression(C=0.001)
             classifier = Pipeline([("rbm", rbm), ("logistic", logistic)])
             classifier.fit(X_train, y_train)
             self.result = metrics.classification_report(y_test, classifier.predict(X_test), output_dict=True)
-            print(self.result)
 
             # predictions
             self.y_test_pred = classifier.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
 
             # calculate accuracy
             Accuracy_test = self.result['accuracy']
@@ -434,7 +435,7 @@ class ImbalancedPerformanceClass:
             self.aucs_tests.append(Aucs_test)
 
             # precision_calculation
-            result2 = self.result['weighted avg']
+            result2 = self.result['macro avg']
             Precision_score_test = result2['precision']
             self.precision_tests.append(Precision_score_test)
 
@@ -444,7 +445,7 @@ class ImbalancedPerformanceClass:
 
             # calculating F1
             F1Score_test = result2['f1-score']
-            self.f1_score_tests.append(F1Score_test)
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -501,6 +502,7 @@ class ImbalancedPerformanceClass:
 
             # predictions
             self.y_test_pred = model.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
 
             # calculate accuracy
             Accuracy_test = keras.metrics.binary_accuracy(y_test, self.y_test_pred)[-1]
@@ -528,7 +530,7 @@ class ImbalancedPerformanceClass:
             # calculating F1
             F1Score_test = 2 * (Precision_score_test * Recall_score_test) / (
                         Precision_score_test + Recall_score_test + K.epsilon())
-            self.f1_score_tests.append(format(F1Score_test))
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -603,6 +605,7 @@ class ImbalancedPerformanceClass:
 
             # predictions
             self.y_test_pred = model.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
 
             # calculate accuracy
             Accuracy_test = keras.metrics.binary_accuracy(y_test, self.y_test_pred)[-1]
@@ -630,7 +633,7 @@ class ImbalancedPerformanceClass:
             # calculating F1
             F1Score_test = 2 * (Precision_score_test * Recall_score_test) / (
                     Precision_score_test + Recall_score_test + K.epsilon())
-            self.f1_score_tests.append(format(F1Score_test))
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
@@ -674,7 +677,7 @@ class ImbalancedPerformanceClass:
         plt.legend(['Train', 'Val'], loc='upper left')
         plt.show()
 
-    def performanceBNN(self, model):
+    def performanceBPNN(self, model):
         for name, X_train, y_train, X_test, y_test in model:
             # appending name
             self.names.append(name)
@@ -684,35 +687,58 @@ class ImbalancedPerformanceClass:
             y_test = np.nan_to_num(y_test)
 
             # build model
-
+            self.epochs = 20
+            model = Sequential()
+            model.add(Dense(14, input_shape=(29,), activation='relu'))
+            model.add(Dense(2, activation='softmax'))
+            model.add(Dense(14, activation='relu'))
+            model.add(Dense(29, activation='sigmoid'))
+            model.compile(Adam(lr=0.001), loss="categorical_crossentropy", metrics=['accuracy'])
+            self.history = model.fit(X_train, X_train, epochs=self.epochs, validation_data=(X_test, X_test), verbose=0)
 
             # predictions
-
+            self.y_test_pred = model.predict(X_test)
+            self.y_test_pred = np.nan_to_num(self.y_test_pred)
 
             # calculate accuracy
-
+            mse = np.mean(np.power(X_test - self.y_test_pred, 2), axis=1)
+            error_df = pd.DataFrame({'reconstruction_error': mse, 'true_class': self.y_test})
+            fpr, tpr, thresholds = metrics.roc_curve(self.y_test, mse)
+            Accuracy_test = metrics.auc(fpr, tpr)
+            self.accuracy_tests.append(Accuracy_test)
 
             # calculate auc
+            self.aucs_tests.append(Accuracy_test)
 
             # precision_calculation
+            precision, recall, th = metrics.precision_recall_curve(error_df.true_class, error_df.reconstruction_error)
+            s = np.count_nonzero(precision)
+            Precision_score_test = np.sum(precision) / s
+            self.precision_tests.append(Precision_score_test)
 
             # calculate recall
+            s = np.count_nonzero(recall)
+            Recall_score_test = np.sum(recall) / s
+            self.recall_tests.append(Recall_score_test)
 
             # calculating F1
+            F1Score_test = 2 * (Precision_score_test * Recall_score_test) / (
+                        Precision_score_test + Recall_score_test + K.epsilon())
+            self.f1_score_tests.append(str(format(F1Score_test)))
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
-            #print("Model Name :", name)
-            #print('Test Accuracy : ' + str(Accuracy_test))
-            #print('Test AUC : ' + str(Accuracy_test))
-            #print('Test Precision : ' + str(Precision_score_test))
-            #print('Test Recall : ' + str(Recall_score_test))
-            #print('Test F1 : ' + str(F1Score_test))
+            print("Model Name :", name)
+            print('Test Accuracy : ' + str(Accuracy_test))
+            print('Test AUC : ' + str(Accuracy_test))
+            print('Test Precision : ' + str(Precision_score_test))
+            print('Test Recall : ' + str(Recall_score_test))
+            print('Test F1 : ' + str(F1Score_test))
             # print('Confusion Matrix : \n', cnf_matrix)
-            #print("\n")
+            print("\n")
 
-            #plt.plot(fpr, tpr, linewidth=2, label=name + ", auc=" + str(Accuracy_test))
+            plt.plot(fpr, tpr, linewidth=2, label=name + ", auc=" + str(Accuracy_test))
 
         plt.legend(loc=4)
         plt.plot([0, 1], [0, 1], 'k--')
@@ -733,4 +759,4 @@ class ImbalancedPerformanceClass:
         }
         print("Comparing performance of various Classifiers: \n \n")
         comparision = pd.DataFrame(data=comparision)
-        return comparision.sort_values('F1 Score', ascending=False)
+        return comparision.sort_values('Accuracy', ascending=False)

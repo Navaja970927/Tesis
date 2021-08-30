@@ -5,11 +5,11 @@ import pandas as pd
 
 class RamdomOverSampleClass:
 
-    def read_data(self, csv):
+    def read_data(self, csv, test_size=0.2):
         self.df = pd.read_csv(csv)
         self.X = self.df.drop(['Class', 'Amount'], axis=1)
         self.y = self.df['Class']
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.3,
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=test_size,
                                                                                 shuffle=True)
 
     def ros(self):

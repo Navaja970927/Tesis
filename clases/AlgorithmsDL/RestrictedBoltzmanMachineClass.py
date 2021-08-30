@@ -18,6 +18,37 @@ def RBM(ip):
     return RBMModel
 
 
+def RBMImbalanced(ip):
+    RBMModel = []
+    RBMModel.append(('RBM IMBALANCE', ip.X_train, ip.y_train, ip.X_test, ip.y_test))
+    return RBMModel
+
+
+def RBMUnderSample(ip):
+    RBMModel = []
+    RBMModel.append(('RBM UNDERSAMPLE', ip.X_train_under, ip.y_train_under, ip.X_test_under, ip.y_test_under))
+    return RBMModel
+
+
+def RBMOverSample(ip):
+    RBMModel = []
+    RBMModel.append(('RBM OVERSAMPLE', ip.X_train_over, ip.y_train_over, ip.X_test_over, ip.y_test_over))
+    return RBMModel
+
+
+def RBMSMOTE(ip):
+    RBMModel = []
+    RBMModel.append(('RBM SMOTE', ip.X_train_smote, ip.y_train_smote, ip.X_test_smote, ip.y_test_smote))
+    return RBMModel
+
+
+def RBMADASYN(ip):
+    RBMModel = []
+    RBMModel.append(('RBM ADASYN', ip.X_train_adasyn, ip.y_train_adasyn, ip.X_test_adasyn, ip.y_test_adasyn))
+    return RBMModel
+
+
+
 def sample_prob(probs, rand):
     """ Takes a tensor of probabilities (as from a sigmoidal activation)
     and samples from all the distributions

@@ -95,7 +95,7 @@ class RestrictedBoltzmanMachineClass(object):
         :param num_visible: number of visible units
         :param num_hidden: number of hidden units
         :param visible_unit_type: type of the visible units (binary or gaussian)
-        :param main_dir: main directory to put the models, data and summary directories
+        :param main_dir: main directory to put the modelos, data and summary directories
         :param model_name: name of the model, used to save data
         :param gibbs_sampling_steps: optional, default 1
         :param learning_rate: optional, default 0.01

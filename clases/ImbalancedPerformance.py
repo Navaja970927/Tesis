@@ -3,7 +3,6 @@ from clases.ImbalancedSolution.RandomUnderSampleClass import RamdomUnderSampleCl
 from clases.ImbalancedSolution.RandomOverSampleClass import RamdomOverSampleClass
 from clases.ImbalancedSolution.SMOTEClass import SMOTEClass
 from clases.ImbalancedSolution.ADASYNClass import ADASYNClass
-from clases.AlgorithmsDL.RestrictedBoltzmanMachineClass import RestrictedBoltzmanMachineClass, RBM
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.pipeline import Pipeline
 import tensorflow as tf
@@ -18,6 +17,7 @@ from sklearn.neural_network import BernoulliRBM
 from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization, GaussianNoise, SimpleRNN, LSTM, RNN
 from keras.layers import Conv1D, ReLU, RepeatVector, TimeDistributed, MaxPooling1D, UpSampling1D, Conv2D, Reshape
 import matplotlib.pyplot as plt
+from keras.utils.vis_utils import plot_model
 from sklearn import metrics
 import pandas as pd
 import numpy as np
@@ -38,6 +38,7 @@ class ImbalancedPerformanceClass:
     precision_tests = []
     recall_tests = []
     f1_score_tests = []
+    histories = []
 
     accuracy_train = []
     recall_train = []
@@ -204,9 +205,12 @@ class ImbalancedPerformanceClass:
 
             model.add(Dense(1, activation='sigmoid'))
             batch_size = 112
-            model.compile(optimizer='adam',
+            model.compile(optimizer='adam', loss='binary_crossentropy',
                           metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
-            self.history = model.fit(X_train, y_train, epochs=self.epochs, batch_size=batch_size, verbose=1)
+            plot_model(model, to_file='PNG/modelos/CNNmodel.png', show_shapes=True)
+            self.history = model.fit(X_train, y_train, epochs=self.epochs, batch_size=batch_size, verbose=1,
+                                     validation_data=(X_test, y_test))
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = model.predict(X_test)
@@ -291,14 +295,17 @@ class ImbalancedPerformanceClass:
             decoder = Dropout(dropout[1])(encoder)
             decoder = Dense(int(encoding_dim / 2), activation='relu')(decoder)
             decoder = Dropout(dropout[2])(decoder)
-            decoder = Dense(input_dim, activation='sigmoid')(decoder)
+            decoder = Dense(input_dim, activation='relu')(decoder)
+            decoder = Dense(1, activation='sigmoid')(decoder)
 
             autoencoder = Model(inputs=input_layer, outputs=decoder)
             batch_size = 32
             autoencoder.compile(optimizer='adam', loss='binary_crossentropy',
                                 metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
-            self.history = autoencoder.fit(X_train, X_train, epochs=self.epochs, batch_size=batch_size, shuffle=True,
-                            validation_data=(X_test, X_test))
+            plot_model(autoencoder, to_file='PNG/modelos/AEmodel.png', show_shapes=True)
+            self.history = autoencoder.fit(X_train, y_train, epochs=self.epochs, batch_size=batch_size, shuffle=True,
+                                           validation_data=(X_test, y_test))
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = autoencoder.predict(X_test)
@@ -384,12 +391,15 @@ class ImbalancedPerformanceClass:
             encoder = Dense(int(encoding_dim / 2), activation="relu")(encoder)
             encoder = Dense(1, activation='relu')(encoder)
             decoder = Dense(int(encoding_dim / 2), activation='relu')(encoder)
-            decoder = Dense(input_dim, activation='sigmoid')(decoder)
+            decoder = Dense(input_dim, activation='relu')(decoder)
+            decoder = Dense(1, activation='sigmoid')(decoder)
 
             denoising = Model(inputs=input_layer, outputs=decoder)
             denoising.compile(loss='binary_crossentropy', optimizer=SGD(),
                               metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
-            self.history = denoising.fit(X_train, X_train, epochs=self.epochs, validation_data=(X_test, X_test))
+            plot_model(denoising, to_file='PNG/modelos/DAEmodel.png', show_shapes=True)
+            self.history = denoising.fit(X_train, y_train, epochs=self.epochs, validation_data=(X_test, y_test))
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = denoising.predict(X_test)
@@ -559,7 +569,9 @@ class ImbalancedPerformanceClass:
             opt = Adam()
             model.compile(optimizer=opt, loss='binary_crossentropy',
                           metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
+            plot_model(model, to_file='PNG/modelos/RNNmodel.png', show_shapes=True)
             self.history = model.fit(X_train, y_train, epochs=self.epochs, validation_data=(X_test, y_test), verbose=1)
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = model.predict(X_test)
@@ -651,7 +663,9 @@ class ImbalancedPerformanceClass:
             opt = Adam()
             model.compile(optimizer=opt, loss='binary_crossentropy',
                           metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
+            plot_model(model, to_file='PNG/modelos/LSTMmodel.png', show_shapes=True)
             self.history = model.fit(X_train, y_train, epochs=self.epochs, validation_data=(X_test, y_test), verbose=1)
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = model.predict(X_test)
@@ -719,20 +733,25 @@ class ImbalancedPerformanceClass:
 
             # appending name
             self.names.append(name)
-            X_train = np.nan_to_num(X_train)
-            y_train = np.nan_to_num(y_train)
-            X_test = np.nan_to_num(X_test)
-            y_test = np.nan_to_num(y_test)
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+            y_train = y_train.to_numpy()
+            y_test = y_test.to_numpy()
+            X_train = X_train.reshape(X_train.shape[0], X_train.shape[1])
+            X_test = X_test.reshape(X_test.shape[0], X_test.shape[1])
 
             # build model
             model = Sequential()
             model.add(Dense(14, input_shape=(29,), activation='relu'))
             model.add(Dense(2, activation='softmax'))
             model.add(Dense(14, activation='relu'))
-            model.add(Dense(29, activation='sigmoid'))
+            model.add(Dense(1, activation='sigmoid'))
             model.compile(optimizer='adam', loss="binary_crossentropy",
                           metrics=[self.precision_m, self.recall_m, self.custom_f1, 'accuracy'])
-            self.history = model.fit(X_train, X_train, epochs=self.epochs, verbose=1)
+            plot_model(model, to_file='PNG/modelos/BPNNmodel.png', show_shapes=True)
+            self.history = model.fit(X_train, y_train, epochs=self.epochs, verbose=1, validation_data=(X_test, y_test))
+            self.histories.append(self.history)
 
             # predictions
             self.y_test_pred = model.predict(X_test)
@@ -2679,7 +2698,7 @@ class ImbalancedPerformanceClass:
 
     def show_comparison_general(self):
         comparision = {
-            'Eposh': self.eps,
+            'Epoch': self.eps,
             'Model': self.names,
             'Accuracy': self.accuracy_tests,
             'AUC': self.aucs_tests,
@@ -2713,7 +2732,7 @@ class ImbalancedPerformanceClass:
 
     def show_comparison_eposh(self):
         comparision = {
-            'Eposh': self.eps,
+            'Epoch': self.eps,
             'Model': self.names,
             'Accuracy': self.accuracy_tests,
             'AUC': self.aucs_tests,
@@ -2750,7 +2769,7 @@ class ImbalancedPerformanceClass:
 
     def show_comparison_train(self):
         comparision = {
-            'Eposh': self.eps,
+            'Epoch': self.eps,
             'Model': self.names,
             'Accuracy Train': self.accuracy_train,
             'Precision Score Train': self.precision_train,

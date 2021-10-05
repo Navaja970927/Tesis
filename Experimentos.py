@@ -8,7 +8,6 @@ from clases.AlgorithmsML.KNearestNeighbor import *
 from clases.AlgorithmsDL.ConvolutionNeuralNetworkClass import *
 from clases.AlgorithmsDL.AutoencoderClass import *
 from clases.AlgorithmsDL.DenoisingAutoencoderClass import *
-from clases.AlgorithmsDL.RestrictedBoltzmanMachineClass import *
 from clases.AlgorithmsDL.RecurrentNeuralNetworkClass import *
 from clases.AlgorithmsDL.LongShortTermMemoryClass import *
 from clases.AlgorithmsDL.BackpropagationNeuralNetworkClass import *
@@ -119,7 +118,7 @@ def plot_graph(ip, names, title, pos, epochs, path):
     plt.show()
 
 
-def experimento1():
+def experimento1(path_save="PNG/Experimento1/KNN_Test_size.png"):
     ip = ImbalancedPerformanceClass()
     ip.solve_imbalanced("creditcard.csv", 0.1)
     ip.performanceML(KNNImbalanced(ip))
@@ -147,13 +146,13 @@ def experimento1():
     ax.legend()
 
     fig.tight_layout()
-    plt.savefig("PNG/Experimento1/KNN_Test_size.png")
+    plt.savefig(path_save)
     plt.show()
 
     ip.show_comparison_test_size()
 
 
-def experimento2():
+def experimento2(path_save="PNG/Experimento2/"):
     ip = ImbalancedPerformanceClass()
     ip.solve_imbalanced("creditcard.csv")
     # Imbalanced
@@ -206,27 +205,27 @@ def experimento2():
     # Imbalanced
     title = "Scores by metrics in ML models with Imbalanced"
     pos = [0, 1, 2, 3, 4, 5, 6]
-    path = "PNG/Experimento2/ML_imbalanced_test"
+    path = path_save + "ML_imbalanced_test"
     plot_bar_test_full(ip, names_1, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in ML models with UnderSampler"
     pos = [7, 8, 9, 10, 11, 12, 13]
-    path = "PNG/Experimento2/ML_UnderSampler_test"
+    path = path_save + "ML_UnderSampler_test"
     plot_bar_test_full(ip, names_1, title, pos, path)
     # OverSampler
     title = "Scores by metrics in ML models with OverSampler"
     pos = [14, 15, 16, 17, 18, 19, 20]
-    path = "PNG/Experimento2/ML_OverSampler_test"
+    path = path_save + "ML_OverSampler_test"
     plot_bar_test_full(ip, names_1, title, pos, path)
     # SMOTE
     title = "Scores by metrics in ML models with SMOTE"
     pos = [21, 22, 23, 24, 25, 26, 27]
-    path = "PNG/Experimento2/ML_SMOTE_test"
+    path = path_save + "ML_SMOTE_test"
     plot_bar_test_full(ip, names_1, title, pos, path)
     # ADASYN
     title = "Scores by metrics in ML models with SMOTE"
     pos = [28, 29, 30, 31, 32, 33, 34]
-    path = "PNG/Experimento2/ML_ADASYN_test"
+    path = path_save + "ML_ADASYN_test"
     plot_bar_test_full(ip, names_1, title, pos, path)
 
 
@@ -240,7 +239,7 @@ def experimento2():
     writer.close()
 
 
-def experimento3():
+def experimento3(path_save="PNG/Experimento3/"):
     ip = ImbalancedPerformanceClass()
     ip.solve_imbalanced("creditcard.csv")
     ip.epochs = 1
@@ -290,7 +289,7 @@ def experimento3():
     ax.legend()
     fig.tight_layout()
     plt.ylim((0.995, 1.0))
-    plt.savefig("PNG/Experimento3/CNN_dropouts_tests")
+    plt.savefig(path_save + "CNN_dropouts_tests")
     plt.show()
     fig, ax = plt.subplots()
     for i in p:
@@ -306,7 +305,7 @@ def experimento3():
     ax.legend()
     fig.tight_layout()
     plt.ylim((0.995, 1.0))
-    plt.savefig("PNG/Experimento3/RNN_dropouts_tests")
+    plt.savefig(path_save + "RNN_dropouts_tests")
     plt.show()
 
     comparision = ip.show_comparison_dropout()
@@ -345,7 +344,7 @@ def experimento3():
     writer.close()
 
 
-def experimento4_5():
+def experimento4_5(path_save="PNG/"):
     ip = ImbalancedPerformanceClass()
     ip.solve_imbalanced("creditcard.csv")
     ip.epochs = 1
@@ -502,110 +501,110 @@ def experimento4_5():
     # epochs 1
     title = "Scores by metrics in DL models Imbalanced with 1 epoch"
     pos = [0, 1, 2, 3, 4, 5]
-    path = "PNG/Experimento4/Imbalanced/DL_imbalanced_1_test"
+    path = path_save + "Experimento4/Imbalanced/DL_imbalanced_1_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models Imbalanced with 20 epochs"
     pos = [30, 31, 32, 33, 34, 35]
-    path = "PNG/Experimento4/Imbalanced/DL_imbalanced_20_test"
+    path = path_save + "Experimento4/Imbalanced/DL_imbalanced_20_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DL models Imbalanced with 50 epochs"
     pos = [60, 61, 62, 63, 64, 65]
-    path = "PNG/Experimento4/Imbalanced/DL_imbalanced_50_test"
+    path = path_save + "Experimento4/Imbalanced/DL_imbalanced_50_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DL models Imbalanced with 100 epochs"
     pos = [90, 91, 92, 93, 94, 95]
-    path = "PNG/Experimento4/Imbalanced/DL_imbalanced_100_test"
+    path = path_save + "Experimento4/Imbalanced/DL_imbalanced_100_test"
     plot_bar_test(ip, names_1, title, pos, path)
 
     # UnderSampler
     # epoch 1
     title = "Scores by metrics in DL models UnderSampler with 1 epoch"
     pos = [6, 7, 8, 9, 10, 11]
-    path = "PNG/Experimento4/UnderSampler/DL_UnderSampler_1_test"
+    path = path_save + "Experimento4/UnderSampler/DL_UnderSampler_1_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models UnderSampler with 20 epochs"
     pos = [36, 37, 38, 39, 40, 41]
-    path = "PNG/Experimento4/UnderSampler/DL_UnderSampler_20_test"
+    path = path_save + "Experimento4/UnderSampler/DL_UnderSampler_20_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DL models UnderSampler with 50 epochs"
     pos = [66, 67, 68, 69, 70, 71]
-    path = "PNG/Experimento4/UnderSampler/DL_UnderSampler_50_test"
+    path = path_save + "Experimento4/UnderSampler/DL_UnderSampler_50_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DL models UnderSampler with 100 epochs"
     pos = [96, 97, 98, 99, 100, 101]
-    path = "PNG/Experimento4/UnderSampler/DL_UnderSampler_100_test"
+    path = path_save + "Experimento4/UnderSampler/DL_UnderSampler_100_test"
     plot_bar_test(ip, names_1, title, pos, path)
 
     # OverSampler
     # epoch 1
     title = "Scores by metrics in DL models OverSampler with 1 epoch"
     pos = [12, 13, 14, 15, 16, 17]
-    path = "PNG/Experimento4/OverSampler/DL_OverSampler_1_test"
+    path = path_save + "Experimento4/OverSampler/DL_OverSampler_1_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models OverSampler with 20 epochs"
     pos = [42, 43, 44, 45, 46, 47]
-    path = "PNG/Experimento4/OverSampler/DL_OverSampler_20_test"
+    path = path_save + "Experimento4/OverSampler/DL_OverSampler_20_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DL models OverSampler with 50 epochs"
     pos = [72, 73, 74, 75, 76, 77]
-    path = "PNG/Experimento4/OverSampler/DL_OverSampler_50_test"
+    path = path_save + "Experimento4/OverSampler/DL_OverSampler_50_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DL models OverSampler with 100 epochs"
     pos = [102, 103, 104, 105, 106, 107]
-    path = "PNG/Experimento4/OverSampler/DL_OverSampler_100_test"
+    path = path_save + "Experimento4/OverSampler/DL_OverSampler_100_test"
     plot_bar_test(ip, names_1, title, pos, path)
 
     # SMOTE
     # epoch 1
     title = "Scores by metrics in DL models SMOTE with 1 epoch"
     pos = [18, 19, 20, 21, 22, 23]
-    path = "PNG/Experimento4/SMOTE/DL_SMOTE_1_test"
+    path = path_save + "Experimento4/SMOTE/DL_SMOTE_1_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models SMOTE with 20 epochs"
     pos = [48, 49, 50, 51, 52, 53]
-    path = "PNG/Experimento4/SMOTE/DL_SMOTE_20_test"
+    path = path_save + "Experimento4/SMOTE/DL_SMOTE_20_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DL models SMOTE with 50 epochs"
     pos = [78, 79, 80, 81, 82, 83]
-    path = "PNG/Experimento4/SMOTE/DL_SMOTE_50_test"
+    path = path_save + "Experimento4/SMOTE/DL_SMOTE_50_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DL models SMOTE with 100 epochs"
     pos = [108, 109, 110, 111, 112, 113]
-    path = "PNG/Experimento4/SMOTE/DL_SMOTE_100_test"
+    path = path_save + "Experimento4/SMOTE/DL_SMOTE_100_test"
     plot_bar_test(ip, names_1, title, pos, path)
 
     # ADASYN
     # epoch 1
     title = "Scores by metrics in DL models ADASYN with 1 epoch"
     pos = [24, 25, 26, 27, 28, 29]
-    path = "PNG/Experimento4/ADASYN/DL_ADASYN_1_test"
+    path = path_save + "Experimento4/ADASYN/DL_ADASYN_1_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models ADASYN with 20 epochs"
     pos = [54, 55, 56, 57, 58, 59]
-    path = "PNG/Experimento4/ADASYN/DL_ADASYN_20_test"
+    path = path_save + "Experimento4/ADASYN/DL_ADASYN_20_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DL models ADASYN with 50 epochs"
     pos = [84, 85, 86, 87, 88, 89]
-    path = "PNG/Experimento4/ADASYN/DL_ADASYN_50_test"
+    path = path_save + "Experimento4/ADASYN/DL_ADASYN_50_test"
     plot_bar_test(ip, names_1, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DL models ADASYN with 100 epochs"
     pos = [114, 115, 116, 117, 118, 119]
-    path = "PNG/Experimento4/ADASYN/DL_ADASYN_100_test"
+    path = path_save + "Experimento4/ADASYN/DL_ADASYN_100_test"
     plot_bar_test(ip, names_1, title, pos, path)
 
     # every model by epochs and strategies
@@ -613,132 +612,132 @@ def experimento4_5():
     # epoch 1
     title = "Scores by metrics in CNN models with 1 epoch"
     pos = [0, 6, 12, 16, 24]
-    path = "PNG/Experimento4/CNN/CNN_1_test"
+    path = path_save + "Experimento4/CNN/CNN_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in CNN models with 20 epochs"
     pos = [30, 36, 42, 48, 54]
-    path = "PNG/Experimento4/CNN/CNN_20_test"
+    path = path_save + "Experimento4/CNN/CNN_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in CNN models with 50 epochs"
     pos = [60, 66, 72, 78, 84]
-    path = "PNG/Experimento4/CNN/CNN_50_test"
+    path = path_save + "Experimento4/CNN/CNN_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in CNN models with 100 epochs"
     pos = [90, 96, 102, 108, 114]
-    path = "PNG/Experimento4/CNN/CNN_100_test"
+    path = path_save + "Experimento4/CNN/CNN_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # AE
     # epoch 1
     title = "Scores by metrics in AE models with 1 epoch"
     pos = [1, 7, 13, 17, 25]
-    path = "PNG/Experimento4/AE/AE_1_test"
+    path = path_save + "Experimento4/AE/AE_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in AE models with 20 epochs"
     pos = [31, 37, 43, 49, 55]
-    path = "PNG/Experimento4/AE/AE_20_test"
+    path = path_save + "Experimento4/AE/AE_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in AE models with 50 epochs"
     pos = [61, 67, 73, 79, 85]
-    path = "PNG/Experimento4/AE/AE_50_test"
+    path = path_save + "Experimento4/AE/AE_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in AE models with 100 epochs"
     pos = [91, 97, 103, 109, 115]
-    path = "PNG/Experimento4/AE/AE_100_test"
+    path = path_save + "Experimento4/AE/AE_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # DAE
     # epoch 1
     title = "Scores by metrics in DAE models with 1 epoch"
     pos = [2, 8, 14, 20, 26]
-    path = "PNG/Experimento4/DAE/DAE_1_test"
+    path = path_save + "Experimento4/DAE/DAE_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DAE models with 20 epochs"
     pos = [32, 38, 44, 50, 56]
-    path = "PNG/Experimento4/DAE/DAE_20_test"
+    path = path_save + "Experimento4/DAE/DAE_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in DAE models with 50 epochs"
     pos = [62, 68, 74, 80, 86]
-    path = "PNG/Experimento4/DAE/DAE_50_test"
+    path = path_save + "Experimento4/DAE/DAE_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in DAE models with 100 epochs"
     pos = [92, 98, 104, 110, 116]
-    path = "PNG/Experimento4/DAE/DAE_100_test"
+    path = path_save + "Experimento4/DAE/DAE_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # RNN
     # epoch 1
     title = "Scores by metrics in RNN models with 1 epoch"
     pos = [3, 9, 15, 21, 27]
-    path = "PNG/Experimento4/RNN/RNN_1_test"
+    path = path_save + "Experimento4/RNN/RNN_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in RNN models with 20 epochs"
     pos = [33, 39, 45, 51, 57]
-    path = "PNG/Experimento4/RNN/RNN_20_test"
+    path = path_save + "Experimento4/RNN/RNN_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in RNN models with 50 epochs"
     pos = [63, 69, 75, 81, 87]
-    path = "PNG/Experimento4/RNN/RNN_50_test"
+    path = path_save + "Experimento4/RNN/RNN_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in RNN models with 100 epochs"
     pos = [93, 99, 105, 111, 117]
-    path = "PNG/Experimento4/RNN/RNN_100_test"
+    path = path_save + "Experimento4/RNN/RNN_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # LSTM
     # epoch 1
     title = "Scores by metrics in LSTM models with 1 epoch"
     pos = [4, 10, 16, 22, 28]
-    path = "PNG/Experimento4/LSTM/LSTM_1_test"
+    path = path_save + "Experimento4/LSTM/LSTM_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in LSTM models with 20 epochs"
     pos = [34, 40, 46, 52, 58]
-    path = "PNG/Experimento4/LSTM/LSTM_20_test"
+    path = path_save + "Experimento4/LSTM/LSTM_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in LSTM models with 50 epochs"
     pos = [64, 70, 76, 82, 88]
-    path = "PNG/Experimento4/LSTM/LSTM_50_test"
+    path = path_save + "Experimento4/LSTM/LSTM_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in LSTM models with 100 epochs"
     pos = [94, 100, 106, 112, 118]
-    path = "PNG/Experimento4/LSTM/LSTM_100_test"
+    path = path_save + "Experimento4/LSTM/LSTM_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # BPNN
     # epoch 1
     title = "Scores by metrics in BPNN models with 1 epoch"
     pos = [5, 11, 17, 23, 29]
-    path = "PNG/Experimento4/BPNN/BPNN_1_test"
+    path = path_save + "Experimento4/BPNN/BPNN_1_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in BPNN models with 20 epochs"
     pos = [35, 41, 47, 53, 59]
-    path = "PNG/Experimento4/BPNN/BPNN_20_test"
+    path = path_save + "Experimento4/BPNN/BPNN_20_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 50
     title = "Scores by metrics in BPNN models with 50 epochs"
     pos = [65, 71, 77, 83, 89]
-    path = "PNG/Experimento4/BPNN/BPNN_50_test"
+    path = path_save + "Experimento4/BPNN/BPNN_50_test"
     plot_bar_test(ip, names_2, title, pos, path)
     # epochs 100
     title = "Scores by metrics in BPNN models with 100 epochs"
     pos = [95, 101, 107, 113, 119]
-    path = "PNG/Experimento4/BPNN/BPNN_100_test"
+    path = path_save + "Experimento4/BPNN/BPNN_100_test"
     plot_bar_test(ip, names_2, title, pos, path)
 
     # every models by strategies
@@ -747,157 +746,157 @@ def experimento4_5():
     # Imbalanced
     title = "Scores by metrics in CNN models with Imbalanced"
     pos = [0, 30, 60, 90]
-    path = "PNG/Experimento4/CNN/CNN_Imbalanced_test"
+    path = path_save + "Experimento4/CNN/CNN_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in CNN models with UnderSampler"
     pos = [6, 36, 66, 96]
-    path = "PNG/Experimento4/CNN/CNN_UnderSampler_test"
+    path = path_save + "Experimento4/CNN/CNN_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in CNN models with OverSampler"
     pos = [12, 42, 72, 102]
-    path = "PNG/Experimento4/CNN/CNN_OverSampler_test"
+    path = path_save + "Experimento4/CNN/CNN_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in CNN models with SMOTE"
     pos = [18, 48, 78, 108]
-    path = "PNG/Experimento4/CNN/CNN_SMOTE_test"
+    path = path_save + "Experimento4/CNN/CNN_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in CNN models with ADASYN"
     pos = [24, 54, 84, 114]
-    path = "PNG/Experimento4/CNN/CNN_ADASYN_test"
+    path = path_save + "Experimento4/CNN/CNN_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # AE
     # Imbalanced
     title = "Scores by metrics in AE models with Imbalanced"
     pos = [1, 31, 61, 91]
-    path = "PNG/Experimento4/AE/AE_Imbalanced_test"
+    path = path_save + "Experimento4/AE/AE_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in AE models with UnderSampler"
     pos = [7, 37, 67, 97]
-    path = "PNG/Experimento4/AE/AE_UnderSampler_test"
+    path = path_save + "Experimento4/AE/AE_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in AE models with OverSampler"
     pos = [13, 43, 73, 103]
-    path = "PNG/Experimento4/AE/AE_OverSampler_test"
+    path = path_save + "Experimento4/AE/AE_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in AE models with SMOTE"
     pos = [19, 49, 79, 109]
-    path = "PNG/Experimento4/AE/AE_SMOTE_test"
+    path = path_save + "Experimento4/AE/AE_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in AE models with ADASYN"
     pos = [25, 55, 85, 115]
-    path = "PNG/Experimento4/AE/AE_ADASYN_test"
+    path = path_save + "Experimento4/AE/AE_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # DAE
     # Imbalanced
     title = "Scores by metrics in DAE models with Imbalanced"
     pos = [2, 32, 62, 92]
-    path = "PNG/Experimento4/DAE/DAE_Imbalanced_test"
+    path = path_save + "Experimento4/DAE/DAE_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in DAE models with UnderSampler"
     pos = [8, 38, 68, 98]
-    path = "PNG/Experimento4/DAE/DAE_UnderSampler_test"
+    path = path_save + "Experimento4/DAE/DAE_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in DAE models with OverSampler"
     pos = [14, 44, 74, 104]
-    path = "PNG/Experimento4/DAE/DAE_OverSampler_test"
+    path = path_save + "Experimento4/DAE/DAE_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in DAE models with SMOTE"
     pos = [20, 50, 80, 110]
-    path = "PNG/Experimento4/DAE/DAE_SMOTE_test"
+    path = path_save + "Experimento4/DAE/DAE_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in DAE models with ADASYN"
     pos = [26, 56, 86, 116]
-    path = "PNG/Experimento4/DAE/DAE_ADASYN_test"
+    path = path_save + "Experimento4/DAE/DAE_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # RNN
     # Imbalanced
     title = "Scores by metrics in RNN models with Imbalanced"
     pos = [3, 33, 63, 93]
-    path = "PNG/Experimento4/RNN/RNN_Imbalanced_test"
+    path = path_save + "Experimento4/RNN/RNN_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in RNN models with UnderSampler"
     pos = [9, 39, 69, 99]
-    path = "PNG/Experimento4/RNN/RNN_UnderSampler_test"
+    path = path_save + "Experimento4/RNN/RNN_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in RNN models with OverSampler"
     pos = [15, 45, 75, 105]
-    path = "PNG/Experimento4/RNN/RNN_OverSampler_test"
+    path = path_save + "Experimento4/RNN/RNN_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in RNN models with SMOTE"
     pos = [21, 51, 81, 111]
-    path = "PNG/Experimento4/RNN/RNN_SMOTE_test"
+    path = path_save + "Experimento4/RNN/RNN_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in RNN models with ADASYN"
     pos = [27, 57, 87, 117]
-    path = "PNG/Experimento4/RNN/RNN_ADASYN_test"
+    path = path_save + "Experimento4/RNN/RNN_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # LSTM
     # Imbalanced
     title = "Scores by metrics in LSTM models with Imbalanced"
     pos = [4, 34, 64, 94]
-    path = "PNG/Experimento4/LSTM/LSTM_Imbalanced_test"
+    path = path_save + "Experimento4/LSTM/LSTM_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in LSTM models with UnderSampler"
     pos = [10, 40, 70, 100]
-    path = "PNG/Experimento4/LSTM/LSTM_UnderSampler_test"
+    path = path_save + "Experimento4/LSTM/LSTM_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in LSTM models with OverSampler"
     pos = [16, 46, 76, 106]
-    path = "PNG/Experimento4/LSTM/LSTM_OverSampler_test"
+    path = path_save + "Experimento4/LSTM/LSTM_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in LSTM models with SMOTE"
     pos = [22, 52, 82, 112]
-    path = "PNG/Experimento4/LSTM/LSTM_SMOTE_test"
+    path = path_save + "Experimento4/LSTM/LSTM_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in LSTM models with ADASYN"
     pos = [28, 58, 88, 118]
-    path = "PNG/Experimento4/LSTM/LSTM_ADASYN_test"
+    path = path_save + "Experimento4/LSTM/LSTM_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # BPNN
     # Imbalanced
     title = "Scores by metrics in BPNN models with Imbalanced"
     pos = [5, 35, 65, 95]
-    path = "PNG/Experimento4/BPNN/BPNN_Imbalanced_test"
+    path = path_save + "Experimento4/BPNN/BPNN_Imbalanced_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in BPNN models with UnderSampler"
     pos = [11, 41, 71, 101]
-    path = "PNG/Experimento4/BPNN/BPNN_UnderSampler_test"
+    path = path_save + "Experimento4/BPNN/BPNN_UnderSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in BPNN models with OverSampler"
     pos = [17, 47, 77, 107]
-    path = "PNG/Experimento4/BPNN/BPNN_OverSampler_test"
+    path = path_save + "Experimento4/BPNN/BPNN_OverSampler_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in BPNN models with SMOTE"
     pos = [23, 53, 83, 113]
-    path = "PNG/Experimento4/BPNN/BPNN_SMOTE_test"
+    path = path_save + "Experimento4/BPNN/BPNN_SMOTE_test"
     plot_bar_test(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in BPNN models with ADASYN"
     pos = [29, 59, 89, 119]
-    path = "PNG/Experimento4/BPNN/BPNN_ADASYN_test"
+    path = path_save + "Experimento4/BPNN/BPNN_ADASYN_test"
     plot_bar_test(ip, epochs, title, pos, path)
 
     values = comparision.values
@@ -982,106 +981,106 @@ def experimento4_5():
     # epochs 1
     title = "Scores by metrics in DL models Imbalanced with 1 epoch"
     pos = [0, 1, 2, 3, 4, 5]
-    path = "PNG/Experimento5/Imbalanced/DL_imbalanced_1_train"
+    path = path_save + "Experimento5/Imbalanced/DL_imbalanced_1_train"
     plot_bar_train(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models Imbalanced with 20 epochs"
     pos = [30, 31, 32, 33, 34, 35]
-    path = "PNG/Experimento5/Imbalanced/DL_imbalanced_20_train"
+    path = path_save + "Experimento5/Imbalanced/DL_imbalanced_20_train"
     plot_graph(ip, names_1, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DL models Imbalanced with 50 epochs"
     pos = [60, 61, 62, 63, 64, 65]
-    path = "PNG/Experimento5/Imbalanced/DL_imbalanced_50_train"
+    path = path_save + "Experimento5/Imbalanced/DL_imbalanced_50_train"
     plot_graph(ip, names_1, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DL models Imbalanced with 100 epochs"
     pos = [90, 91, 92, 93, 94, 95]
-    path = "PNG/Experimento5/Imbalanced/DL_imbalanced_100_train"
+    path = path_save + "Experimento5/Imbalanced/DL_imbalanced_100_train"
     plot_graph(ip, names_1, title, pos, 100, path)
     # UnderSampler
     # epoch 1
     title = "Scores by metrics in DL models UnderSampler with 1 epoch"
     pos = [6, 7, 8, 9, 10, 11]
-    path = "PNG/Experimento5/UnderSampler/DL_UnderSampler_1_train"
+    path = path_save + "Experimento5/UnderSampler/DL_UnderSampler_1_train"
     plot_bar_train(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models UnderSampler with 20 epochs"
     pos = [36, 37, 38, 39, 40, 41]
-    path = "PNG/Experimento5/UnderSampler/DL_UnderSampler_20_train"
+    path = path_save + "Experimento5/UnderSampler/DL_UnderSampler_20_train"
     plot_graph(ip, names_1, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DL models UnderSampler with 50 epochs"
     pos = [66, 67, 68, 69, 70, 71]
-    path = "PNG/Experimento5/UnderSampler/DL_UnderSampler_50_train"
+    path = path_save + "Experimento5/UnderSampler/DL_UnderSampler_50_train"
     plot_graph(ip, names_1, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DL models UnderSampler with 100 epochs"
     pos = [96, 97, 98, 99, 100, 101]
-    path = "PNG/Experimento5/UnderSampler/DL_UnderSampler_100_train"
+    path = path_save + "Experimento5/UnderSampler/DL_UnderSampler_100_train"
     plot_graph(ip, names_1, title, pos, 100, path)
     # OverSampler
     # epoch 1
     title = "Scores by metrics in DL models OverSampler with 1 epoch"
     pos = [12, 13, 14, 15, 16, 17]
-    path = "PNG/Experimento5/OverSampler/DL_OverSampler_1_train"
+    path = path_save + "Experimento5/OverSampler/DL_OverSampler_1_train"
     plot_bar_train(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models OverSampler with 20 epochs"
     pos = [42, 43, 44, 45, 46, 47]
-    path = "PNG/Experimento5/OverSampler/DL_OverSampler_20_train"
+    path = path_save + "Experimento5/OverSampler/DL_OverSampler_20_train"
     plot_graph(ip, names_1, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DL models OverSampler with 50 epochs"
     pos = [72, 73, 74, 75, 76, 77]
-    path = "PNG/Experimento5/OverSampler/DL_OverSampler_50_train"
+    path = path_save + "Experimento5/OverSampler/DL_OverSampler_50_train"
     plot_graph(ip, names_1, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DL models OverSampler with 100 epochs"
     pos = [102, 103, 104, 105, 106, 107]
-    path = "PNG/Experimento5/OverSampler/DL_OverSampler_100_train"
+    path = path_save + "Experimento5/OverSampler/DL_OverSampler_100_train"
     plot_graph(ip, names_1, title, pos, 100, path)
     # SMOTE
     # epoch 1
     title = "Scores by metrics in DL models SMOTE with 1 epoch"
     pos = [18, 19, 20, 21, 22, 23]
-    path = "PNG/Experimento5/SMOTE/DL_SMOTE_1_train"
+    path = path_save + "Experimento5/SMOTE/DL_SMOTE_1_train"
     plot_bar_train(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models SMOTE with 20 epochs"
     pos = [48, 49, 50, 51, 52, 53]
-    path = "PNG/Experimento5/SMOTE/DL_SMOTE_20_train"
+    path = path_save + "Experimento5/SMOTE/DL_SMOTE_20_train"
     plot_graph(ip, names_1, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DL models SMOTE with 50 epochs"
     pos = [78, 79, 80, 81, 82, 83]
-    path = "PNG/Experimento5/SMOTE/DL_SMOTE_50_train"
+    path = path_save + "Experimento5/SMOTE/DL_SMOTE_50_train"
     plot_graph(ip, names_1, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DL models SMOTE with 100 epochs"
     pos = [108, 109, 110, 111, 112, 113]
-    path = "PNG/Experimento5/SMOTE/DL_SMOTE_100_train"
+    path = path_save + "Experimento5/SMOTE/DL_SMOTE_100_train"
     plot_graph(ip, names_1, title, pos, 100, path)
     # ADASYN
     # epoch 1
     title = "Scores by metrics in DL models ADASYN with 1 epoch"
     pos = [24, 25, 26, 27, 28, 29]
-    path = "PNG/Experimento5/ADASYN/DL_ADASYN_1_train"
+    path = path_save + "Experimento5/ADASYN/DL_ADASYN_1_train"
     plot_bar_train(ip, names_1, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DL models ADASYN with 20 epochs"
     pos = [54, 55, 56, 57, 58, 59]
-    path = "PNG/Experimento5/ADASYN/DL_ADASYN_20_train"
+    path = path_save + "Experimento5/ADASYN/DL_ADASYN_20_train"
     plot_graph(ip, names_1, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DL models ADASYN with 50 epochs"
     pos = [84, 85, 86, 87, 88, 89]
-    path = "PNG/Experimento5/ADASYN/DL_ADASYN_50_train"
+    path = path_save + "Experimento5/ADASYN/DL_ADASYN_50_train"
     plot_graph(ip, names_1, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DL models ADASYN with 100 epochs"
     pos = [114, 115, 116, 117, 118, 119]
-    path = "PNG/Experimento5/ADASYN/DL_ADASYN_100_train"
+    path = path_save + "Experimento5/ADASYN/DL_ADASYN_100_train"
     plot_graph(ip, names_1, title, pos, 100, path)
 
     # every model by epochs and strategies
@@ -1089,127 +1088,127 @@ def experimento4_5():
     # epoch 1
     title = "Scores by metrics in CNN models with 1 epoch"
     pos = [0, 6, 12, 16, 24]
-    path = "PNG/Experimento5/CNN/CNN_1_train"
+    path = path_save + "Experimento5/CNN/CNN_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in CNN models with 20 epochs"
     pos = [30, 36, 42, 48, 54]
-    path = "PNG/Experimento5/CNN/CNN_20_train"
+    path = path_save + "Experimento5/CNN/CNN_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in CNN models with 50 epochs"
     pos = [60, 66, 72, 78, 84]
-    path = "PNG/Experimento5/CNN/CNN_50_train"
+    path = path_save + "Experimento5/CNN/CNN_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in CNN models with 100 epochs"
     pos = [90, 96, 102, 108, 114]
-    path = "PNG/Experimento5/CNN/CNN_100_train"
+    path = path_save + "Experimento5/CNN/CNN_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
     # AE
     # epoch 1
     title = "Scores by metrics in AE models with 1 epoch"
     pos = [1, 7, 13, 17, 25]
-    path = "PNG/Experimento5/AE/AE_1_train"
+    path = path_save + "Experimento5/AE/AE_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in AE models with 20 epochs"
     pos = [31, 37, 43, 49, 55]
-    path = "PNG/Experimento5/AE/AE_20_train"
+    path = path_save + "Experimento5/AE/AE_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in AE models with 50 epochs"
     pos = [61, 67, 73, 79, 85]
-    path = "PNG/Experimento5/AE/AE_50_train"
+    path = path_save + "Experimento5/AE/AE_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in AE models with 100 epochs"
     pos = [91, 97, 103, 109, 115]
-    path = "PNG/Experimento5/AE/AE_100_train"
+    path = path_save + "Experimento5/AE/AE_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
     # DAE
     # epoch 1
     title = "Scores by metrics in DAE models with 1 epoch"
     pos = [2, 8, 14, 20, 26]
-    path = "PNG/Experimento5/DAE/DAE_1_train"
+    path = path_save + "Experimento5/DAE/DAE_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in DAE models with 20 epochs"
     pos = [32, 38, 44, 50, 56]
-    path = "PNG/Experimento5/DAE/DAE_20_train"
+    path = path_save + "Experimento5/DAE/DAE_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in DAE models with 50 epochs"
     pos = [62, 68, 74, 80, 86]
-    path = "PNG/Experimento5/DAE/DAE_50_train"
+    path = path_save + "Experimento5/DAE/DAE_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in DAE models with 100 epochs"
     pos = [92, 98, 104, 110, 116]
-    path = "PNG/Experimento5/DAE/DAE_100_train"
+    path = path_save + "Experimento5/DAE/DAE_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
     # RNN
     # epoch 1
     title = "Scores by metrics in RNN models with 1 epoch"
     pos = [3, 9, 15, 21, 27]
-    path = "PNG/Experimento5/RNN/RNN_1_train"
+    path = path_save + "Experimento5/RNN/RNN_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in RNN models with 20 epochs"
     pos = [33, 39, 45, 51, 57]
-    path = "PNG/Experimento5/RNN/RNN_20_train"
+    path = path_save + "Experimento5/RNN/RNN_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in RNN models with 50 epochs"
     pos = [63, 69, 75, 81, 87]
-    path = "PNG/Experimento5/RNN/RNN_50_train"
+    path = path_save + "Experimento5/RNN/RNN_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in RNN models with 100 epochs"
     pos = [93, 99, 105, 111, 117]
-    path = "PNG/Experimento5/RNN/RNN_100_train"
+    path = path_save + "Experimento5/RNN/RNN_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
     # LSTM
     # epoch 1
     title = "Scores by metrics in LSTM models with 1 epoch"
     pos = [4, 10, 16, 22, 28]
-    path = "PNG/Experimento5/LSTM/LSTM_1_train"
+    path = path_save + "Experimento5/LSTM/LSTM_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in LSTM models with 20 epochs"
     pos = [34, 40, 46, 52, 58]
-    path = "PNG/Experimento5/LSTM/LSTM_20_train"
+    path = path_save + "Experimento5/LSTM/LSTM_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in LSTM models with 50 epochs"
     pos = [64, 70, 76, 82, 88]
-    path = "PNG/Experimento5/LSTM/LSTM_50_train"
+    path = path_save + "Experimento5/LSTM/LSTM_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in LSTM models with 100 epochs"
     pos = [94, 100, 106, 112, 118]
-    path = "PNG/Experimento5/LSTM/LSTM_100_train"
+    path = path_save + "Experimento5/LSTM/LSTM_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
     # BPNN
     # epoch 1
     title = "Scores by metrics in BPNN models with 1 epoch"
     pos = [5, 11, 17, 23, 29]
-    path = "PNG/Experimento5/BPNN/BPNN_1_train"
+    path = path_save + "Experimento5/BPNN/BPNN_1_train"
     plot_bar_train(ip, names_2, title, pos, path)
     # epochs 20
     title = "Scores by metrics in BPNN models with 20 epochs"
     pos = [35, 41, 47, 53, 59]
-    path = "PNG/Experimento5/BPNN/BPNN_20_train"
+    path = path_save + "Experimento5/BPNN/BPNN_20_train"
     plot_graph(ip, names_2, title, pos, 20, path)
     # epochs 50
     title = "Scores by metrics in BPNN models with 50 epochs"
     pos = [65, 71, 77, 83, 89]
-    path = "PNG/Experimento5/BPNN/BPNN_50_train"
+    path = path_save + "Experimento5/BPNN/BPNN_50_train"
     plot_graph(ip, names_2, title, pos, 50, path)
     # epochs 100
     title = "Scores by metrics in BPNN models with 100 epochs"
     pos = [95, 101, 107, 113, 119]
-    path = "PNG/Experimento5/BPNN/BPNN_100_train"
+    path = path_save + "Experimento5/BPNN/BPNN_100_train"
     plot_graph(ip, names_2, title, pos, 100, path)
 
     # every models by strategies
@@ -1217,157 +1216,157 @@ def experimento4_5():
     # Imbalanced
     title = "Scores by metrics in CNN models with Imbalanced"
     pos = [0, 30, 60, 90]
-    path = "PNG/Experimento5/CNN/CNN_Imbalanced_train"
+    path = path_save + "Experimento5/CNN/CNN_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in CNN models with UnderSampler"
     pos = [6, 36, 66, 96]
-    path = "PNG/Experimento5/CNN/CNN_UnderSampler_train"
+    path = path_save + "Experimento5/CNN/CNN_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in CNN models with OverSampler"
     pos = [12, 42, 72, 102]
-    path = "PNG/Experimento5/CNN/CNN_OverSampler_train"
+    path = path_save + "Experimento5/CNN/CNN_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in CNN models with SMOTE"
     pos = [18, 48, 78, 108]
-    path = "PNG/Experimento5/CNN/CNN_SMOTE_train"
+    path = path_save + "Experimento5/CNN/CNN_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in CNN models with ADASYN"
     pos = [24, 54, 84, 114]
-    path = "PNG/Experimento5/CNN/CNN_ADASYN_train"
+    path = path_save + "Experimento5/CNN/CNN_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # AE
     # Imbalanced
     title = "Scores by metrics in AE models with Imbalanced"
     pos = [1, 31, 61, 91]
-    path = "PNG/Experimento5/AE/AE_Imbalanced_train"
+    path = path_save + "Experimento5/AE/AE_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in AE models with UnderSampler"
     pos = [7, 37, 67, 97]
-    path = "PNG/Experimento5/AE/AE_UnderSampler_train"
+    path = path_save + "Experimento5/AE/AE_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in AE models with OverSampler"
     pos = [13, 43, 73, 103]
-    path = "PNG/Experimento5/AE/AE_OverSampler_train"
+    path = path_save + "Experimento5/AE/AE_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in AE models with SMOTE"
     pos = [19, 49, 79, 109]
-    path = "PNG/Experimento5/AE/AE_SMOTE_train"
+    path = path_save + "Experimento5/AE/AE_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in AE models with ADASYN"
     pos = [25, 55, 85, 115]
-    path = "PNG/Experimento5/AE/AE_ADASYN_train"
+    path = path_save + "Experimento5/AE/AE_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # DAE
     # Imbalanced
     title = "Scores by metrics in DAE models with Imbalanced"
     pos = [2, 32, 62, 92]
-    path = "PNG/Experimento5/DAE/DAE_Imbalanced_train"
+    path = path_save + "Experimento5/DAE/DAE_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in DAE models with UnderSampler"
     pos = [8, 38, 68, 98]
-    path = "PNG/Experimento5/DAE/DAE_UnderSampler_train"
+    path = path_save + "Experimento5/DAE/DAE_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in DAE models with OverSampler"
     pos = [14, 44, 74, 104]
-    path = "PNG/Experimento5/DAE/DAE_OverSampler_train"
+    path = path_save + "Experimento5/DAE/DAE_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in DAE models with SMOTE"
     pos = [20, 50, 80, 110]
-    path = "PNG/Experimento5/DAE/DAE_SMOTE_train"
+    path = path_save + "Experimento5/DAE/DAE_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in DAE models with ADASYN"
     pos = [26, 56, 86, 116]
-    path = "PNG/Experimento5/DAE/DAE_ADASYN_train"
+    path = path_save + "Experimento5/DAE/DAE_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # RNN
     # Imbalanced
     title = "Scores by metrics in RNN models with Imbalanced"
     pos = [3, 33, 63, 93]
-    path = "PNG/Experimento5/RNN/RNN_Imbalanced_train"
+    path = path_save + "Experimento5/RNN/RNN_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in RNN models with UnderSampler"
     pos = [9, 39, 69, 99]
-    path = "PNG/Experimento5/RNN/RNN_UnderSampler_train"
+    path = path_save + "Experimento5/RNN/RNN_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in RNN models with OverSampler"
     pos = [15, 45, 75, 105]
-    path = "PNG/Experimento5/RNN/RNN_OverSampler_train"
+    path = path_save + "Experimento5/RNN/RNN_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in RNN models with SMOTE"
     pos = [21, 51, 81, 111]
-    path = "PNG/Experimento5/RNN/RNN_SMOTE_train"
+    path = path_save + "Experimento5/RNN/RNN_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in RNN models with ADASYN"
     pos = [27, 57, 87, 117]
-    path = "PNG/Experimento5/RNN/RNN_ADASYN_train"
+    path = path_save + "Experimento5/RNN/RNN_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # LSTM
     # Imbalanced
     title = "Scores by metrics in LSTM models with Imbalanced"
     pos = [4, 34, 64, 94]
-    path = "PNG/Experimento5/LSTM/LSTM_Imbalanced_train"
+    path = path_save + "Experimento5/LSTM/LSTM_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in LSTM models with UnderSampler"
     pos = [10, 40, 70, 100]
-    path = "PNG/Experimento5/LSTM/LSTM_UnderSampler_train"
+    path = path_save + "Experimento5/LSTM/LSTM_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in LSTM models with OverSampler"
     pos = [16, 46, 76, 106]
-    path = "PNG/Experimento5/LSTM/LSTM_OverSampler_train"
+    path = path_save + "Experimento5/LSTM/LSTM_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in LSTM models with SMOTE"
     pos = [22, 52, 82, 112]
-    path = "PNG/Experimento5/LSTM/LSTM_SMOTE_train"
+    path = path_save + "Experimento5/LSTM/LSTM_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in LSTM models with ADASYN"
     pos = [28, 58, 88, 118]
-    path = "PNG/Experimento5/LSTM/LSTM_ADASYN_train"
+    path = path_save + "Experimento5/LSTM/LSTM_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # BPNN
     # Imbalanced
     title = "Scores by metrics in BPNN models with Imbalanced"
     pos = [5, 35, 65, 95]
-    path = "PNG/Experimento5/BPNN/BPNN_Imbalanced_train"
+    path = path_save + "Experimento5/BPNN/BPNN_Imbalanced_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # UnderSampler
     title = "Scores by metrics in BPNN models with UnderSampler"
     pos = [11, 41, 71, 101]
-    path = "PNG/Experimento5/BPNN/BPNN_UnderSampler_train"
+    path = path_save + "Experimento5/BPNN/BPNN_UnderSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # OverSampler
     title = "Scores by metrics in BPNN models with OverSampler"
     pos = [17, 47, 77, 107]
-    path = "PNG/Experimento5/BPNN/BPNN_OverSampler_train"
+    path = path_save + "Experimento5/BPNN/BPNN_OverSampler_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # SMOTE
     title = "Scores by metrics in BPNN models with SMOTE"
     pos = [23, 53, 83, 113]
-    path = "PNG/Experimento5/BPNN/BPNN_SMOTE_train"
+    path = path_save + "Experimento5/BPNN/BPNN_SMOTE_train"
     plot_bar_train(ip, epochs, title, pos, path)
     # ADASYN
     title = "Scores by metrics in BPNN models with ADASYN"
     pos = [29, 59, 89, 119]
-    path = "PNG/Experimento5/BPNN/BPNN_ADASYN_train"
+    path = path_save + "Experimento5/BPNN/BPNN_ADASYN_train"
     plot_bar_train(ip, epochs, title, pos, path)
 
     values = comparision.values

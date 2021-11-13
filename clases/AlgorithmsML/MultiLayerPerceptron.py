@@ -1,4 +1,3 @@
-from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 from sklearn.neural_network import MLPClassifier
 
 

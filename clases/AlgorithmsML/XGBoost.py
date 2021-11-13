@@ -1,4 +1,3 @@
-from clases.ImbalancedPerformance import ImbalancedPerformanceClass
 from xgboost import XGBClassifier
 
 

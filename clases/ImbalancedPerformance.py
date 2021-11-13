@@ -1,22 +1,15 @@
-from sklearn.linear_model import LogisticRegression
 from clases.ImbalancedSolution.RandomUnderSampleClass import RamdomUnderSampleClass
 from clases.ImbalancedSolution.RandomOverSampleClass import RamdomOverSampleClass
 from clases.ImbalancedSolution.SMOTEClass import SMOTEClass
 from clases.ImbalancedSolution.ADASYNClass import ADASYNClass
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 import tensorflow as tf
-from tensorflow import keras
-from sklearn.model_selection import train_test_split, StratifiedKFold
 import keras.backend as K
 from keras.optimizers import SGD, Adam
 from keras import Sequential
 from keras.models import Model
-from keras.callbacks import ModelCheckpoint, TensorBoard
-from sklearn.neural_network import BernoulliRBM
 from keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization, GaussianNoise, SimpleRNN, LSTM, RNN
-from keras.layers import Conv1D, ReLU, RepeatVector, TimeDistributed, MaxPooling1D, UpSampling1D, Conv2D, Reshape
-import matplotlib.pyplot as plt
+from keras.layers import Conv1D
 from keras.utils.vis_utils import plot_model
 from sklearn import metrics
 import pandas as pd
@@ -256,6 +249,9 @@ class ImbalancedPerformanceClass:
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
+            # Saving CNN model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs and ' + str(dropout) + ' dropout.h5')
+
             print("Model Name : ", name)
             print('Test Accuracy : ' + str(Accuracy_test))
             print('Test AUC : ' + str(Aucs_test))
@@ -350,6 +346,9 @@ class ImbalancedPerformanceClass:
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
+
+            # Saving AE model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs and ' + str(dropout) + ' dropout.h5')
 
             print("Model Name :", name)
             print('Test Accuracy : ' + str(Accuracy_test))
@@ -453,6 +452,9 @@ class ImbalancedPerformanceClass:
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
+            # Saving DAE model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs.h5')
+
             print("Model Name :", name)
             print('Test Accuracy : ' + str(Accuracy_test))
             print('Test AUC : ' + str(Accuracy_test))
@@ -546,6 +548,9 @@ class ImbalancedPerformanceClass:
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
+
+            # Saving RNN model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs and ' + str(dropout) + ' dropout.h5')
 
             print("Model Name : ", name)
             print('Test Accuracy : ' + str(Accuracy_test))
@@ -641,6 +646,9 @@ class ImbalancedPerformanceClass:
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
 
+            # Saving LSTM model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs and ' + str(dropout) + ' dropout.h5')
+
             print("Model Name : ", name)
             print('Test Accuracy : ' + str(Accuracy_test))
             print('Test AUC : ' + str(Aucs_test))
@@ -726,6 +734,9 @@ class ImbalancedPerformanceClass:
 
             # draw confusion matrix (have troubles)
             # cnf_matrix = metrics.confusion_matrix(y_test, self.y_test_pred)
+
+            # Saving BPNN model
+            model.save('Models/DL/' + name + ' with ' + str(self.epochs) + ' epochs.h5')
 
             print("Model Name :", name)
             print('Test Accuracy : ' + str(Accuracy_test))

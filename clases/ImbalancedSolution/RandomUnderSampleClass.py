@@ -27,37 +27,3 @@ class RamdomUnderSampleClass:
         print("y_train_under: ", self.y_train_under.shape)
         print("X_test_under: ", self.X_test_under.shape)
         print("y_test_under: ", self.y_test_under.shape)
-
-    def performance(model):
-        for name, model, X_train, y_train, X_test, y_test in model:
-            # appending name
-            names.append(name)
-
-            # Build model
-            model.fit(X_train, y_train)
-
-            # predictions
-            y_test_pred = model.predict(X_test)
-
-            # calculate accuracy
-            Accuracy_test = metrics.accuracy_score(y_test, y_test_pred)
-            accuracy_tests.append(Accuracy_test)
-
-            # calculate auc
-            Aucs_test = metrics.roc_auc_score(y_test, y_test_pred)
-            aucs_tests.append(Aucs_test)
-
-            # precision_calculation
-            Precision_score_test = metrics.precision_score(y_test, y_test_pred)
-            precision_tests.append(Precision_score_test)
-
-            # calculate recall
-            Recall_score_test = metrics.recall_score(y_test, y_test_pred)
-            recall_tests.append(Recall_score_test)
-
-            # calculating F1
-            F1Score_test = metrics.f1_score(y_test, y_test_pred)
-            f1_score_tests.append(F1Score_test)
-
-            # draw confusion matrix
-            cnf_matrix = metrics.confusion_matrix(y_test, y_test_pred)

@@ -1,0 +1,641 @@
+\chapter*{Anexos}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento2/ML_Imbalanced_test"}
+	\caption{Puntuaciones de las pruebas de los modelos ML con datos desbalanceados.}
+	\label{an:1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento2/ML_UnderSampler_test"}
+	\caption{Puntuaciones de las pruebas de los modelos ML con UnderSampler.}
+	\label{an:2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento2/ML_OverSampler_test"}
+	\caption{Puntuaciones de las pruebas de los modelos ML con OverSampler.}
+	\label{an:3}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento2/ML_SMOTE_test"}
+	\caption{Puntuaciones de las pruebas de los modelos ML con SMOTE.}
+	\label{an:4}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento2/ML_ADASYN_test"}
+	\caption{Puntuaciones de las pruebas de los modelos ML con ADASYN.}
+	\label{an:5}
+\end{figure}
+
+\begin{longtable}{|c|c|c|c|c|c|c|}
+	\hline
+	Epoch & Model & Accuracy & AUC & Precision & Recall & F1\\ \hline
+	\endfirsthead
+	\hline
+	Epoch & Model & Accuracy & AUC & Precision & Recall & F1\\ \hline
+	\endhead
+	1 & CNN IMBALANCE & \colorbox{green}{0.99675} & 0.566667 & \colorbox{green}{0.996761} & \colorbox{green}{0.99675} & \colorbox{green}{0.99551}\\ \hline
+	50 & CNN IMBALANCE & \colorbox{green}{0.99675} & 0.566667 & \colorbox{green}{0.996761} & \colorbox{green}{0.99675} & \colorbox{green}{0.99551}\\ \hline
+	20 & CNN IMBALANCE & \colorbox{yellow}{0.9965} & 0.566541 & 0.99551 & \colorbox{yellow}{0.9965} & \colorbox{yellow}{0.995336}\\ \hline
+	100 & CNN IMBALANCE & 0.99625 & 0.566416 & 0.994884 & 0.99625 & 0.995167\\ \hline
+	1 & DAE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & DAE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & AE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & DAE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & RNN UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & LSTM UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & BPNN UNDERSAMPLE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	1 & AE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & RNN IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & DAE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & RNN IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & LSTM IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & BPNN IMBALANCE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	50 & AE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & RNN UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & LSTM IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & LSTM UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	50 & BPNN UNDERSAMPLE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	100 & AE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & DAE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & RNN IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & LSTM IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & BPNN IMBALANCE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	100 & AE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & DAE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & RNN UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & LSTM UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & BPNN UNDERSAMPLE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	20 & BPNN IMBALANCE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	50 & AE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & RNN IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & LSTM IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & DAE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & BPNN UNDERSAMPLE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	1 & LSTM UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & DAE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & AE UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	1 & BPNN IMBALANCE & 0.99625 & 0.5 & 0.996264 & 0.99625 & 0.994379\\ \hline
+	1 & RNN UNDERSAMPLE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	20 & AE IMBALANCE & 0.99625 & 0.5 & 0.992514 & 0.99625 & 0.994379\\ \hline
+	100 & AE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	100 & DAE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	100 & RNN OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	1 & BPNN OVERSAMPLE & 0.99575 & 0.5 & 0.995768 & 0.99575 & 0.99363\\ \hline
+	100 & LSTM OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	1 & AE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	1 & DAE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	100 & BPNN OVERSAMPLE & 0.99575 & 0.5 & 0.995768 & 0.99575 & 0.99363\\ \hline
+	50 & LSTM OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	50 & RNN OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	50 & DAE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	50 & AE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	1 & RNN OVERSAMPLE & 0.99575 & 0.5 & 0.995768 & 0.99575 & 0.99363\\ \hline
+	1 & LSTM OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	50 & BPNN OVERSAMPLE & 0.99575 & 0.5 & 0.995768 & 0.99575 & 0.99363\\ \hline
+	20 & LSTM OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	20 & RNN OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	20 & DAE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	20 & AE OVERSAMPLE & 0.99575 & 0.5 & 0.991518 & 0.99575 & 0.99363\\ \hline
+	20 & BPNN OVERSAMPLE & 0.99575 & 0.5 & 0.995768 & 0.99575 & 0.99363\\ \hline
+	100 & AE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	20 & AE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	20 & DAE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	50 & BPNN SMOTE & 0.9955 & 0.5 & 0.99552 & 0.9955 & 0.993255\\ \hline
+	50 & LSTM SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	50 & RNN SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	50 & DAE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	50 & AE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	20 & RNN SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	20 & BPNN SMOTE & 0.9955 & 0.5 & 0.99552 & 0.9955 & 0.993255\\ \hline
+	20 & LSTM SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	100 & DAE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	100 & LSTM SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	100 & BPNN SMOTE & 0.9955 & 0.5 & 0.99552 & 0.9955 & 0.993255\\ \hline
+	1 & BPNN SMOTE & 0.9955 & 0.5 & 0.99552 & 0.9955 & 0.993255\\ \hline
+	1 & LSTM SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	1 & AE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	1 & RNN SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	100 & RNN SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	1 & DAE SMOTE & 0.9955 & 0.5 & 0.99102 & 0.9955 & 0.993255\\ \hline
+	1 & DAE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	100 & LSTM ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	1 & LSTM ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	1 & RNN ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	100 & RNN ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	100 & DAE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	100 & AE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	1 & BPNN ADASYN & 0.99525 & 0.5 & 0.995273 & 0.99525 & 0.992881\\ \hline
+	20 & BPNN ADASYN & 0.99525 & 0.5 & 0.995273 & 0.99525 & 0.992881\\ \hline
+	50 & BPNN ADASYN & 0.99525 & 0.5 & 0.995273 & 0.99525 & 0.992881\\ \hline
+	100 & BPNN ADASYN & 0.99525 & 0.5 & 0.995273 & 0.99525 & 0.992881\\ \hline
+	20 & LSTM ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	1 & AE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	50 & LSTM ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	50 & RNN ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	20 & RNN ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	20 & DAE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	50 & DAE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	50 & AE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	20 & AE ADASYN & 0.99525 & 0.5 & \colorbox{red}{0.990523} & 0.99525 & 0.992881\\ \hline
+	50 & CNN SMOTE & 0.99225 & 0.608977 & 0.992855 & 0.99225 & 0.992547\\ \hline
+	100 & CNN SMOTE & 0.99125 & 0.608474 & 0.992714 & 0.99125 & 0.991958\\ \hline
+	100 & CNN ADASYN & 0.99125 & 0.628941 & 0.992657 & 0.99125 & 0.991927\\ \hline
+	50 & CNN ADASYN & \colorbox{red}{0.99} & 0.628313 & 0.992506 & 0.99 & 0.991192\\ \hline
+	20 & CNN SMOTE & 0.98975 & 0.607721 & 0.992569 & 0.98975 & 0.991101\\ \hline
+	100 & CNN OVERSAMPLE & 0.9875 & \colorbox{yellow}{0.700861} & 0.993864 & 0.9875 & 0.990406\\ \hline
+	50 & CNN OVERSAMPLE & 0.9865 & 0.700359 & 0.993812 & 0.9865 & 0.989846\\ \hline
+	20 & CNN OVERSAMPLE & 0.98475 & 0.69948 & 0.993737 & 0.98475 & 0.988879\\ \hline
+	20 & CNN ADASYN & 0.97925 & 0.622913 & 0.992022 & 0.97925 & 0.985314\\ \hline
+	1 & CNN OVERSAMPLE & 0.93125 & \colorbox{yellow}{0.701902} & 0.993469 & 0.93125 & 0.960463\\ \hline
+	100 & CNN UNDERSAMPLE & 0.76675 & 0.617273 & 0.99368 & 0.76675 & 0.864517\\ \hline
+	50 & CNN UNDERSAMPLE & 0.53675 & 0.535048 & 0.993017 & 0.53675 & 0.695181\\ \hline
+	1 & CNN SMOTE & 0.39575 & 0.558248 & 0.992364 & 0.39575 & 0.562558\\ \hline
+	1 & CNN ADASYN & 0.38025 & 0.531505 & 0.991331 & 0.38025 & 0.546305\\ \hline
+	20 & CNN UNDERSAMPLE & \colorbox{red}{0.121} & 0.459222 & 0.989971 & 0.121 & 0.210891\\ \hline
+	1 & CNN UNDERSAMPLE & 0.0765 & 0.536512 & \colorbox{yellow}{0.996265} & \colorbox{red}{0.0765} & \colorbox{red}{0.135628}\\ \hline
+	\caption{Puntuaciones en las pruebas de los modelos DL por estrategias y epochs.}
+	\label{an:6}
+\end{longtable}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/Imbalanced/DL_imbalanced_1_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 1 epoch.}
+	\label{an:7}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/Imbalanced/DL_imbalanced_20_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 20 epochs.}
+	\label{an:8}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/Imbalanced/DL_imbalanced_50_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 50 epochs.}
+	\label{an:9}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/Imbalanced/DL_imbalanced_100_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 100 epochs.}
+	\label{an:10}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/UnderSampler/DL_UnderSampler_1_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 1 epoch.}
+	\label{an:11}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/UnderSampler/DL_UnderSampler_20_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 20 epochs.}
+	\label{an:12}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/UnderSampler/DL_UnderSampler_50_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 50 epochs.}
+	\label{an:13}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/UnderSampler/DL_UnderSampler_100_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 100 epochs.}
+	\label{an:14}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/OverSampler/DL_OverSampler_1_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 1 epoch.}
+	\label{an:15}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/OverSampler/DL_OverSampler_20_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 20 epochs.}
+	\label{an:16}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/OverSampler/DL_OverSampler_50_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 50 epochs.}
+	\label{an:17}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/OverSampler/DL_OverSampler_100_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 100 epochs.}
+	\label{an:18}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/SMOTE/DL_SMOTE_1_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 1 epoch.}
+	\label{an:19}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/SMOTE/DL_SMOTE_20_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 20 epochs.}
+	\label{an:20}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/SMOTE/DL_SMOTE_50_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 50 epochs.}
+	\label{an:21}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/SMOTE/DL_SMOTE_100_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 100 epochs.}
+	\label{an:22}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/ADASYN/DL_ADASYN_1_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 1 epoch.}
+	\label{an:23}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/ADASYN/DL_ADASYN_20_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 20 epochs.}
+	\label{an:24}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/ADASYN/DL_ADASYN_50_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 50 epochs.}
+	\label{an:25}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/ADASYN/DL_ADASYN_100_train"}
+	\caption{Puntuaciones del entrenamiento de los modelos DL con datos desbalanceados en 100 epochs.}
+	\label{an:26}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/CNN/CNN_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo CNN por estrategias en 1 epoch.}
+	\label{an:27}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/CNN/CNN_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo CNN por estrategias en 20 epochs.}
+	\label{an:28}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/CNN/CNN_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo CNN por estrategias en 50 epochs.}
+	\label{an:29}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/CNN/CNN_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo CNN por estrategias en 100 epochs.}
+	\label{an:30}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/AE/AE_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo AE por estrategias en 1 epoch.}
+	\label{an:31}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/AE/AE_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo AE por estrategias en 20 epochs.}
+	\label{an:32}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/AE/AE_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo AE por estrategias en 50 epochs.}
+	\label{an:33}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/AE/AE_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo AE por estrategias en 100 epochs.}
+	\label{an:34}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/DAE/DAE_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo DAE por estrategias en 1 epoch.}
+	\label{an:35}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/DAE/DAE_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo DAE por estrategias en 20 epochs.}
+	\label{an:36}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/DAE/DAE_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo DAE por estrategias en 50 epochs.}
+	\label{an:37}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/DAE/DAE_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo DAE por estrategias en 100 epochs.}
+	\label{an:38}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/RNN/RNN_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo RNN por estrategias en 1 epoch.}
+	\label{an:39}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/RNN/RNN_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo RNN por estrategias en 20 epochs.}
+	\label{an:40}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/RNN/RNN_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo RNN por estrategias en 50 epochs.}
+	\label{an:41}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/RNN/RNN_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo RNN por estrategias en 100 epochs.}
+	\label{an:42}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/LSTM/LSTM_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo LSTM por estrategias en 1 epoch.}
+	\label{an:43}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/LSTM/LSTM_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo LSTM por estrategias en 20 epochs.}
+	\label{an:44}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/LSTM/LSTM_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo LSTM por estrategias en 50 epochs.}
+	\label{an:45}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/LSTM/LSTM_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo LSTM por estrategias en 100 epochs.}
+	\label{an:46}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/BPNN/BPNN_1_train"}
+	\caption{Puntuaciones del entrenamiento del modelo BPNN por estrategias en 1 epoch.}
+	\label{an:47}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/BPNN/BPNN_20_train"}
+	\caption{Puntuaciones del entrenamiento del modelo BPNN por estrategias en 20 epochs.}
+	\label{an:48}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/BPNN/BPNN_50_train"}
+	\caption{Puntuaciones del entrenamiento del modelo BPNN por estrategias en 50 epochs.}
+	\label{an:49}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"figuras/Experimento5/BPNN/BPNN_100_train"}
+	\caption{Puntuaciones del entrenamiento del modelo BPNN por estrategias en 100 epochs.}
+	\label{an:50}
+\end{figure}
+
+\begin{longtable}{|c|c|c|c|c|c|}
+	\hline
+	Epoch & Model & Accuracy Train & Precision Train & Recall Train & F1 Train\\ \hline
+	\endfirsthead
+	\hline
+	Epoch & Model & Accuracy Train & Precision Train & Recall Train & F1 Train\\ \hline
+	\endhead
+	20 & CNN IMBALANCE & 0.997437477 & 0.083916076 & 0.08041957 & 0.08158508\\ \hline
+	50 & CNN IMBALANCE & 0.998374999 & 0.181818172 & 0.16783215 & 0.17249417\\ \hline
+	1 & CNN IMBALANCE & 0.971125007 & 0.037425533 & 0.05244755 & 0.03988132\\ \hline
+	100 & CNN IMBALANCE & \colorbox{yellow}{0.998562515} & 0.181818172 & 0.18181817 & 0.17948715\\ \hline
+	50 & BPNN SMOTE & 0.998307228 & \colorbox{yellow}{0.998056114} & 0.99864942 & \colorbox{yellow}{0.99829829}\\ \hline
+	100 & BPNN SMOTE & 0.997523487 & 0.996707678 & 0.99837095 & 0.99745846\\ \hline
+	20 & BPNN SMOTE & 0.996896565 & 0.995942354 & 0.99777555 & 0.99675047\\ \hline
+	100 & BPNN UNDERSAMPLE & 0.949999988 & 0.986111104 & 0.93910253 & 0.96012986\\ \hline
+	1 & BPNN SMOTE & 0.855799377 & 0.867141366 & 0.79329419 & 0.81046265\\ \hline
+	50 & BPNN UNDERSAMPLE & 0.800000012 & 0.706439376 & 0.50834119 & 0.58997691\\ \hline
+	20 & BPNN UNDERSAMPLE & 0.689999998 & 0.928571463 & 0.41259468 & 0.55927348\\ \hline
+	50 & BPNN IMBALANCE & 0.998437524 & 0.051999997 & 0.052 & 0.052\\ \hline
+	100 & BPNN IMBALANCE & 0.998437524 & 0.049999997 & 0.04899999 & 0.04933333\\ \hline
+	20 & BPNN IMBALANCE & 0.99781251 & 0.033999994 & 0.03183333 & 0.0324\\ \hline
+	1 & BPNN IMBALANCE & 0.940437496 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	1 & BPNN UNDERSAMPLE & 0.5 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	100 & LSTM SMOTE & 0.994576812 & 0.993465602 & 0.99562114 & 0.99436241\\ \hline
+	50 & LSTM SMOTE & 0.990501583 & 0.987064838 & 0.99409676 & 0.9902218\\ \hline
+	100 & RNN SMOTE & 0.984608173 & 0.981494069 & 0.98768878 & 0.9840225\\ \hline
+	50 & RNN SMOTE & 0.97865206 & 0.974082828 & 0.98366153 & 0.97813684\\ \hline
+	20 & RNN SMOTE & 0.97667712 & 0.971696854 & 0.98222548 & 0.97604197\\ \hline
+	20 & LSTM SMOTE & 0.974043906 & 0.965691805 & 0.98348832 & 0.97362816\\ \hline
+	100 & RNN UNDERSAMPLE & 0.769999981 & 0.845588207 & 0.7712912 & 0.80352724\\ \hline
+	100 & LSTM UNDERSAMPLE & 0.680000007 & 0.829166651 & 0.64908314 & 0.71301317\\ \hline
+	20 & DAE UNDERSAMPLE & 0.5 & 0.5546875 & \colorbox{green}{1} & 0.70659566\\ \hline
+	100 & DAE UNDERSAMPLE & 0.5 & 0.5546875 & \colorbox{green}{1} & 0.70659566\\ \hline
+	1 & RNN SMOTE & 0.705736697 & 0.707795322 & 0.70846796 & 0.70029038\\ \hline
+	20 & LSTM UNDERSAMPLE & 0.660000026 & 0.683493614 & 0.69580197 & 0.6749922\\ \hline
+	20 & RNN UNDERSAMPLE & 0.589999974 & 0.622781396 & 0.68014705 & 0.64144778\\ \hline
+	50 & LSTM UNDERSAMPLE & 0.660000026 & 0.64967531 & 0.67938793 & 0.63414246\\ \hline
+	50 & RNN UNDERSAMPLE & 0.589999974 & 0.576943278 & 0.55650157 & 0.56057417\\ \hline
+	1 & RNN UNDERSAMPLE & 0.540000021 & 0.646139681 & 0.50062847 & 0.54794741\\ \hline
+	50 & AE SMOTE & 0.497680247 & 0.401092619 & 0.80377835 & 0.53134143\\ \hline
+	1 & LSTM SMOTE & 0.611347973 & 0.680008471 & 0.46954575 & 0.52970928\\ \hline
+	1 & LSTM UNDERSAMPLE & 0.49000001 & 0.453070164 & 0.52777779 & 0.48501226\\ \hline
+	1 & DAE SMOTE & 0.498307198 & 0.318110585 & 0.63791376 & 0.42133522\\ \hline
+	1 & AE UNDERSAMPLE & 0.460000008 & 0.2890625 & 0.5 & 0.35873014\\ \hline
+	100 & AE SMOTE & 0.500658333 & 0.290432364 & 0.46473235 & 0.34405035\\ \hline
+	50 & DAE UNDERSAMPLE & 0.439999998 & 0.2265625 & 0.5 & 0.31111109\\ \hline
+	1 & AE SMOTE & 0.495485902 & 0.245143235 & 0.45525572 & 0.30565432\\ \hline
+	20 & DAE SMOTE & 0.498463959 & 0.198380858 & 0.39819458 & 0.26273957\\ \hline
+	1 & DAE UNDERSAMPLE & 0.419999987 & 0.1640625 & 0.49999997 & 0.24444443\\ \hline
+	20 & AE SMOTE & 0.494451404 & 0.153185934 & 0.31193581 & 0.20388429\\ \hline
+	100 & DAE SMOTE & 0.498369902 & 0.13457337 & 0.27081245 & 0.17848259\\ \hline
+	50 & DAE SMOTE & 0.500376165 & 0.111038476 & 0.22166499 & 0.14697345\\ \hline
+	100 & LSTM IMBALANCE & 0.997687519 & 0.027999999 & 0.026 & 0.02666667\\ \hline
+	50 & LSTM IMBALANCE & 0.997500002 & 0.021999998 & 0.022 & 0.022\\ \hline
+	50 & RNN IMBALANCE & 0.997562528 & 0.021999998 & 0.021 & 0.02133333\\ \hline
+	100 & RNN IMBALANCE & 0.997250021 & 0.017999997 & 0.017 & 0.01733333\\ \hline
+	20 & LSTM IMBALANCE & 0.997187495 & 0.015999999 & 0.016 & 0.016\\ \hline
+	20 & RNN IMBALANCE & 0.997250021 & 0.011999999 & 0.011 & 0.01133333\\ \hline
+	1 & RNN IMBALANCE & 0.966437519 & 0.000417647 & 0.006 & 0.00077991\\ \hline
+	1 & LSTM IMBALANCE & 0.99356252 & 0.000133333 & 0.002 & 0.00025\\ \hline
+	50 & DAE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	1 & DAE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	20 & DAE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	20 & AE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	50 & AE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	100 & AE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	100 & DAE IMBALANCE & 0.996874988 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	1 & AE IMBALANCE & 0.961937487 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	20 & AE UNDERSAMPLE & 0.5 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	50 & AE UNDERSAMPLE & 0.5 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	100 & AE UNDERSAMPLE & 0.5 & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	50 & BPNN OVERSAMPLE & \colorbox{green}{0.998746216} & \colorbox{green}{0.998128951} & \colorbox{yellow}{0.99945122} & \colorbox{green}{0.99874675}\\ \hline
+	100 & BPNN OVERSAMPLE & 0.997868598 & 0.996402919 & 0.99924409 & 0.99773329\\ \hline
+	100 & BPNN ADASYN & 0.997837484 & 0.997854769 & 0.997711 & 0.99769962\\ \hline
+	50 & BPNN ADASYN & 0.997367322 & 0.996994555 & 0.9978323 & 0.99731481\\ \hline
+	20 & BPNN ADASYN & 0.994170547 & 0.990253687 & 0.99605656 & 0.99295169\\ \hline
+	20 & BPNN OVERSAMPLE & 0.977965117 & 0.997234166 & 0.9583956 & 0.97664672\\ \hline
+	1 & BPNN OVERSAMPLE & 0.848921776 & 0.847519338 & 0.79990423 & 0.80967408\\ \hline
+	1 & BPNN ADASYN & 0.853605807 & 0.853892446 & 0.7777186 & 0.7936157\\ \hline
+	100 & LSTM OVERSAMPLE & 0.997649193 & 0.99662441 & 0.99878359 & 0.99761117\\ \hline
+	100 & LSTM ADASYN & 0.996395767 & 0.995962143 & 0.99701226 & 0.99636859\\ \hline
+	50 & LSTM OVERSAMPLE & 0.993229687 & 0.989385605 & 0.99745667 & 0.99317294\\ \hline
+	50 & LSTM ADASYN & 0.99200803 & 0.989960134 & 0.99422622 & 0.99179375\\ \hline
+	100 & RNN OVERSAMPLE & 0.991035581 & 0.988565743 & 0.99359387 & 0.9907304\\ \hline
+	50 & RNN OVERSAMPLE & 0.987995207 & 0.986146092 & 0.98979628 & 0.98748618\\ \hline
+	20 & LSTM OVERSAMPLE & 0.986522079 & 0.97854352 & 0.9948802 & 0.98612052\\ \hline
+	100 & RNN ADASYN & 0.981947541 & 0.978451014 & 0.98589307 & 0.98150223\\ \hline
+	20 & RNN OVERSAMPLE & 0.980880141 & 0.975126803 & 0.9871127 & 0.98038369\\ \hline
+	50 & RNN ADASYN & 0.978782058 & 0.976029992 & 0.98226827 & 0.97843897\\ \hline
+	20 & LSTM ADASYN & 0.97126025 & 0.960935235 & 0.98374456 & 0.97121501\\ \hline
+	20 & RNN ADASYN & 0.970476687 & 0.964555323 & 0.97599018 & 0.96923673\\ \hline
+	1 & RNN OVERSAMPLE & 0.686841786 & 0.692915559 & 0.66565263 & 0.67027813\\ \hline
+	1 & RNN ADASYN & 0.672328949 & 0.674672723 & 0.66558403 & 0.66144168\\ \hline
+	100 & AE OVERSAMPLE & 0.505328476 & 0.477624118 & 0.94979382 & 0.63110417\\ \hline
+	50 & DAE OVERSAMPLE & 0.498338759 & 0.424950272 & 0.85155469 & 0.56324184\\ \hline
+	1 & LSTM ADASYN & 0.606763422 & 0.641127884 & 0.50184727 & 0.54669023\\ \hline
+	1 & LSTM OVERSAMPLE & 0.627883673 & 0.723023474 & 0.451469 & 0.53486472\\ \hline
+	100 & DAE ADASYN & 0.498166561 & 0.352663666 & 0.70741481 & 0.46731645\\ \hline
+	1 & AE ADASYN & 0.498511285 & 0.347468525 & 0.68203992 & 0.45665944\\ \hline
+	100 & AE ADASYN & 0.498918742 & 0.341819048 & 0.68436873 & 0.45252213\\ \hline
+	1 & DAE ADASYN & 0.495314509 & 0.299286067 & 0.6032064 & 0.39746156\\ \hline
+	20 & DAE ADASYN & 0.49948287 & 0.286990643 & 0.5741483 & 0.37982234\\ \hline
+	50 & AE ADASYN & 0.499012768 & 0.281594425 & 0.56412828 & 0.3731164\\ \hline
+	1 & AE OVERSAMPLE & 0.500313461 & 0.267389953 & 0.52516413 & 0.35001945\\ \hline
+	20 & AE OVERSAMPLE & 0.497837275 & 0.259196967 & 0.5205617 & 0.34358042\\ \hline
+	20 & DAE OVERSAMPLE & 0.498683542 & 0.255109072 & 0.51153463 & 0.33792847\\ \hline
+	50 & DAE ADASYN & 0.497978508 & 0.251168996 & 0.504008 & 0.33288077\\ \hline
+	20 & AE ADASYN & 0.498417288 & 0.20095399 & 0.39409533 & 0.26037276\\ \hline
+	1 & DAE OVERSAMPLE & 0.498182058 & 0.183143184 & 0.36810431 & 0.24292144\\ \hline
+	100 & DAE OVERSAMPLE & 0.502068698 & 0.15198721 & 0.30190572 & 0.20082469\\ \hline
+	50 & AE OVERSAMPLE & 0.504262805 & 0.157284349 & 0.05726714 & 0.04862355\\ \hline
+	50 & CNN SMOTE & 0.992194355 & 0.99048835 & 0.99384516 & 0.99208343\\ \hline
+	100 & CNN OVERSAMPLE & 0.99730444 & 0.996242702 & 0.99834925 & 0.99726689\\ \hline
+	100 & CNN ADASYN & 0.994139194 & 0.992498457 & 0.99586558 & 0.99411225\\ \hline
+	50 & CNN ADASYN & 0.991976678 & 0.991332591 & 0.99265498 & 0.99191338\\ \hline
+	50 & CNN OVERSAMPLE & 0.995267034 & 0.99372077 & 0.99681431 & 0.99522328\\ \hline
+	100 & CNN SMOTE & 0.993134797 & 0.99086076 & 0.99567538 & 0.9931922\\ \hline
+	20 & CNN OVERSAMPLE & 0.992477417 & 0.990783691 & 0.99415046 & 0.99240476\\ \hline
+	20 & CNN SMOTE & 0.988056421 & 0.984934807 & 0.99140549 & 0.98805213\\ \hline
+	20 & CNN ADASYN & 0.988685846 & 0.98493588 & 0.99253625 & 0.98860687\\ \hline
+	1 & CNN OVERSAMPLE & 0.837606549 & 0.840575874 & 0.83115494 & 0.83343488\\ \hline
+	50 & CNN UNDERSAMPLE & 0.870000005 & 0.862745106 & 0.88 & 0.87128705\\ \hline
+	1 & CNN SMOTE & 0.862601876 & 0.861973703 & 0.8608681 & 0.85896647\\ \hline
+	20 & CNN UNDERSAMPLE & 0.829999983 & 0.811320782 & 0.86000001 & 0.8349514\\ \hline
+	1 & CNN ADASYN & 0.865985513 & 0.869674802 & 0.86216491 & 0.86288518\\ \hline
+	100 & CNN UNDERSAMPLE & 0.939999998 & 0.958333313 & 0.92000002 & 0.93877548\\ \hline
+	0 & RF IMABALANCED & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & RF SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & XGBOOST IMBALANCED & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & RF ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & DT IMBALANCED & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & RF OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & XGBOOST ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & XGBOOST OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & XGBOOST SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & KNN IMBALANCE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & DT SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & DT ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & LR ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & LR OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & DT OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & NB IMBALANCED & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & LR SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & NB OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & NB ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & NB SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & KNN OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & NB UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & MLP SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	1 & CNN UNDERSAMPLE & 0.50999999 & 0.506493509 & 0.77999997 & 0.61417317\\ \hline
+	0 & MLP  ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & KNN SMOTE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & KNN ADASYN & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & MLP OVERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & RF UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & KNN UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & XGBOOST UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & MLP UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & DT UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & LR IMBALANCED & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & MLP IMBALANCE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	0 & LR UNDERSAMPLE & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0} & \colorbox{red}{0}\\ \hline
+	\caption{Puntuaciones del entrenamiento de los modelos DL y ML.}
+	\label{an:51}
+\end{longtable}

@@ -1,0 +1,49 @@
+\section*{Introducci\'{o}n}
+
+ Las Tecnolog\'{i}as de la Informaci\'{o}n y las Comunicaciones (TICs) han penetrado en diversos sectores de la sociedad como la gesti\'{o}n de los activos, bienes y servicios que posee el ser humano. El modelo tradicional de los bancos ha tenido que cambiar para satisfacer las necesidades y exigencias de la creciente demanda de los clientes, tanto que el cliente puede saber su saldo disponible en una cuenta de banco, transferir dinero y realizar conversiones de monedas sin necesidad de realizar visitas f\'{i}sicas a los bancos, todo ello al alcance de un tel\'{e}fono m\'{o}vil conectado a internet. Para mantener el equilibrio entre la emisi\'{o}n de pr\'{e}stamos y el dinero en cuentas de sus clientes, han diversificado su negocio a trav\'{e}s de actividades debido a los riesgos financieros de estar apalancados en sus balances ya que su negocio principal se centra en la captaci\'{o}n de dinero o pasivo y el pr\'{e}stamo de ese dinero a clientes a un tipo de inter\'{e}s mayor.
+
+ Los bancos son un eslab\'{o}n importante para la econom\'{i}a de un pa\'{i}s al igual que para la poblaci\'{o}n que recibe sus servicios. Las empresas emprendedoras pueden fortalecerse a trav\'{e}s de pr\'{e}stamos concedidos por el banco, la poblaci\'{o}n puede tener ahorros y un dep\'{o}sito de capital seguro, y con este capital el banco puede impulsar otros negocios. Pueden prestar dinero a personas para la reconstrucci\'{o}n de hogares, adquisici\'{o}n de equipos electrodom\'[e]sticos, pago de facturas atrasadas, aunque esto pueda ser un arma de doble filo, es una opci\'{o}n importante para muchos. Mediante la revisi\'{o}n de las transacciones que se realizan en sus cuentas de cr\'{e}ditos y d\'{e}bitos pueden detectar los fraudes y lavado de dinero.
+
+ El fraude de tarjetas cr\'{e}dito y d\'{e}bito encabeza la lista de fraudes bancarios por las diversas formas secretas que encuentran los criminales para acceder a la informaci\'{o}n de las tarjetas de cr\'{e}dito. Este tipo de fraude es detectado con m\'{e}todos de inteligencia artificial como la detecci\'{o}n de anomal\'{i}as supervisada y t\'{e}cnicas de regresi\'{o}n.
+ 
+ La detecci\'{o}n de anomal\'{i}as ha cobrado una gran importancia en la comunidad cient\'{i}fica actual, buscando siempre m\'{e}todos para aplicaciones de \textit{Deep Learning} (DL). Existen varias categor\'{i}as de t\'{e}cnicas de detecci\'{o}n de anomal\'{i}as para \textit{Machine Learning} (ML) y dependen del conjunto de datos de entrenamiento que se proveen, este \'{u}ltimo clasificado en supervisados, semi-supervisados y no supervisados. Debido a que el conjunto de datos presenta una gran desproporci\'{o}n de las muestras, se presenta el problema desbalanceado donde un tipo de datos del conjunto es considerablemente inferior a la otra. Para le problema desbalanceado se ha adoptado el sobre muestreo de la clase minoritaria para aliviar el problema, pero a\'{u}n presenta algunas desventajas, una de las cuales es que no a\~{n}ade contenido informativo, limitando el mejoramiento de la habilidad de un clasificador para generalizar. Adem\'{a}s, existe el aprendizaje federado que es una tecnolog\'{i}a b\'{a}sica de inteligencia artificial que como objetivo tiene asegurar la seguridad de la informaci\'{o}n durante el intercambio de Big Data, incluyendo la informaci\'{o}n personal de los clientes.
+ 
+ Con el crecimiento de internet en Cuba y el uso del comercio electr\'{o}nico por medio de las plataformas Enzona\footnote{Enzona es la plataforma cubana para el comercio y el gobierno electr\'{o}nico, la gesti\'{o}n productiva, los servicios y la calidad de vida del pueblo.}  y Transferm\'{o}vil\footnote{Transferm\'{o}vil es la aplicaci\'{o}n Android usada por los clientes de ETECSA para facilitar pagos de servicios, compras en l\'{i}nea, consultas y tr\'{a}mites bancarios y la gesti\'{o}n de los servicios de telecomunicaciones.}  se inician nuevos caminos hacia la transformaci\'{o}n digital en Cuba. Sin embargo, este tipo de facilidades requieren de mecanismos de seguridad para en caso de sustracci\'{o}n de la tarjeta o sus datos, garanticen la seguridad de las cuentas bancarias.
+ 
+ Un sistema de seguridad para este tipo de compras puede ser la detecci\'{o}n de fraude mediante el uso de algoritmos de aprendizaje autom\'{a}tico, que se encargan de detectar si un tipo de movimiento realizado por la tarjeta se corresponde con un comportamiento normal de esa tarjeta concreta o no, en cuyo caso se deben tomar las medidas pertinentes. Una de las grandes ventajas de usar un algoritmo de aprendizaje es que cuantos m\'{a}s movimientos se realicen con la tarjeta, m\'{a}s precisi\'{o}n tendr\'{a} el algoritmo a la hora de determinar si el movimiento que se est\'{a} realizando actualmente con la tarjeta es fraude o no.
+ 
+ Desde el punto de vista de la modelaci\'{o}n del problema para la detecci\'{o}n del fraude en operaciones bancarias mediante aprendizaje autom\'{a}tico, existen varios problemas computacionales a tener en cuenta:
+ 
+ \begin{enumerate}
+ 	\item El vol\'{u}men de operaciones que ocurren diariamente es excesivamente grande para que sea procesado por una computadora por lo que el problema debe ser tratado en entornos distribuidos.
+ 	\item El n\'{u}mero de operaciones fraudulentas es much\'{i}simo menor (aproximadamente 99\% vs 1\%) que las transacciones normales por lo que hay un desbalance del problema.
+ 	\item El flujo de operaciones que ocurren por unidad de tiempo es elevado.
+ \end{enumerate}
+
+Se define como problema de investigaci\'{o}n ¿c\'{o}mo mejorar la detecci\'{o}n automatizada de fraude bancario en escenarios desbalanceados de \textit{Big Data}?
+
+Se presenta como objetivo general: desarrollar una herramienta que integre algoritmos para la detecci\'{o}n autom\'{a}tica de fraude bancario basado en detecci\'{o}n de anomal\'{i}as en escenarios de \textit{Big data}. Desglosado en los siguientes objetivos espec\'{i}ficos:
+
+\begin{enumerate}
+	\item Caracterizar el marco te\'{o}rico-conceptual del problema de la detecci\'{o}n de fraudes bancarios, los enfoques basados en detecci\'{o}n de anomal\'{i}as, sustentados en escenarios de \textit{Big Data}.
+	\item Desarrollar algoritmos basado en redes neuronales profundas, computaci\'{o}n distribuida y tome en cuenta el problema de desbalance para la detecci\'{o}n de anomal\'{i}as en operaciones bancarias.
+	\item Validar la soluci\'{o}n implementada mediante el dise\~{n}o de experimentos sobre conjuntos de datos de referencia, comparando los resultados con otros algoritmos del estado del arte.
+\end{enumerate}
+
+Las tareas de investigaci\'{o}n que guiar\'{a}n la investigaci\'{o}n son:
+
+\begin{itemize}
+	\item Identificar, conceptualizar y caracterizar la detecci\'{o}n de fraudes mediante el enfoque de la detecci\'{o}n de anomal\'{i}as.
+	\item Identificar y caracterizar los algoritmos usados para la detecci\'{o}n de anomal\'{i}as.
+	\item Buscar algoritmos de \textit{Deep Learning} para la detecci\'{o}n de anomal\'{i}as en fraudes bancarios.
+	\item Buscar y desarrollar soluciones para los problemas desbalanceados de los datos.
+	\item Desarrollar un programa haciendo uso de los algoritmos encontrados para la detecci\'{o}n de anomal\'{i}as.
+	\item Validar la soluci\'{o}n propuesta mediante experimentos con juegos de datos.
+	\item Comparar los resultados obtenidos entre los algoritmos usados.
+\end{itemize}
+
+Para el Banco Central de Cuba, como entidad responsable de velar por la seguridad de los datos y activos, de las entidades estatales o particulares que se encuentran en los bancos cubanos, una herramienta que permita detectar el fraude bancario en tiempo casi real, ser\'{i}a estupendo para la salud financiera del pa\'{i}s. Esto permitir\'{i}a detectar las fugas de dinero que se realizan mediante transacciones en los bancos, detectar los robos de saldos que se realizan y no son percatados por los clientes. El pa\'{i}s se beneficiar\'{i}a grandemente en su saldo financiero al llevar un buen control de sus transacciones.
+
+Se espera desarrollar una herramienta inform\'{a}tica que use varios algoritmos para la detecci\'{o}n de fraudes bancarios mediante la detecci\'{o}n de anomal\'{i}as en \textit{Deep Learning}. Se pueden auditar las bases de datos de los bancos con estos algoritmos en busca de fraudes bancarios y se espera que el algoritmo se ejecute en tiempo casi real, as\'{i} se lograr\'{i}a detectar los fraude en el momento y poder revertir o reducir el da\~{n}o que puede ocasionar.
+
+La estructura del documento se desglosa mediante cap\'{i}tulos. En el cap\'{i}tulo 1 se abarcar\'{a} todas las bases te\'{o}ricas relacionadas para el desarrollo del programa, referenciando a todas las investigaciones de la cual se extrajo la informaci\'{o}n. El cap\'{i}tulo 2 abarca todo lo relacionado con las primeras 7 fases de la metodolog\'{i}a que se aplicar\'{a} para la miner\'{i}a de datos, especialmente en la definici\'{o}n de las estructuras y ecuaciones que aplican los algoritmos seleccionados. El cap\'{i}tulo 3 consta de las \'{u}ltimas 2 fases de la metodolog\'{i}a, las cuales abarcan la evaluaci\'{o}n y resultados comparativos de los algoritmos teniendo en cuenta las m\'{e}tricas establecidas, adem\'{a}s de la definici\'{o}n de la herramienta inform\'{a}tica que se desarroll\'{o}.

@@ -1,0 +1,132 @@
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+	\tikzstyle{every pin edge}=[<-,shorten <=1pt]
+	\tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+	\tikzstyle{input neuron}=[neuron, fill=green!100];
+	\tikzstyle{hidden state}=[neuron, fill=blue!50];
+	\tikzstyle{forget gate}=[neuron, fill=orange!50];
+	\tikzstyle{input gate}=[neuron, fill=cyan!50];
+	\tikzstyle{output gate}=[neuron, fill=gray!50];
+	\tikzstyle{cell state}=[neuron, fill=blue!100];
+	\tikzstyle{output neuron}=[neuron, fill=red!50];
+	\tikzstyle{annot} = [text width=4em, text centered]
+	
+	\node[input neuron] (I-1) at (0,-4) {X};
+	\node[hidden state] (H-1) at (\layersep*3,-4) {Hidden state};
+	\node[forget gate] (G-1) at (\layersep*6,-1) {Forget gate};
+	\node[input gate] (G-2) at (\layersep*9,-1) {Input gate};
+	\node[output gate] (G-3) at (\layersep*6,-7) {Output gate};
+	\node[cell state] (H-2) at (\layersep*6,-4) {Cell state};
+	\node[output neuron] (O-1) at (\layersep*9,-4) {y};
+	
+	\path (I-1) edge (H-1);
+	\path (H-1) edge (H-2);
+	\path (G-1) edge (H-2);
+	\path (G-2) edge (H-2);
+	\path (G-3) edge (H-2);
+	\path (H-2) edge (O-1);
+	
+\end{tikzpicture}
+
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+	\tikzstyle{every pin edge}=[<-,shorten <=1pt]
+	\tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+	\tikzstyle{input neuron}=[neuron, fill=green!50];
+	\tikzstyle{fase1 neuron}=[neuron, fill=blue!50];
+	\tikzstyle{fase2 neuron}=[neuron, fill=orange!50];
+	\tikzstyle{output neuron}=[neuron, fill=red!50];
+	\tikzstyle{annot} = [text width=4em, text centered]
+	
+	% Draw the input layer nodes
+	\foreach \y in {1,...,7}{
+		% This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+		\ifnum\y<4
+		\node[input neuron, pin=left: \y] (I-\y) at (0,-\y) {};
+		\fi
+		\ifnum\y=4
+		\node[input neuron, pin=left: \vdots] (I-\y) at (0,-\y) {};
+		\fi
+		\ifnum\y=5
+		\node[input neuron, pin=left: 27] (I-\y) at (0,-\y) {};
+		\fi
+		\ifnum\y=6
+		\node[input neuron, pin=left: 28] (I-\y) at (0,-\y) {};
+		\fi
+		\ifnum\y=7
+		\node[input neuron, pin=left: 29] (I-\y) at (0,-\y) {};
+		\fi
+	}
+	
+	% Draw the LSTM nodes
+	\foreach \y in {1,...,7}
+	\node[fase1 neuron, right of=I-4] (H1-\y) at (\layersep*0.5,-\y) {};
+	
+	% Draw the Dropout_1 nodes
+	\foreach \y in {1,...,7}
+	\node[fase2 neuron, right of=H1-4] (H2-\y) at (\layersep*2.3,-\y) {};
+	
+	% Draw the Dense_1 layer nodes
+	\foreach \y in {1,...,5}
+	\node[fase2 neuron, right of=H2-4] (H3-\y) at (\layersep*3.8,-\y cm) {};
+	
+	% Draw the Dropout_2 nodes
+	\foreach \y in {1,...,5}
+	\node[fase2 neuron, right of=H3-3] (H4-\y) at (\layersep*5.6,-\y cm) {};
+	
+	% Draw the Dense_2 nodes
+	\foreach \y in {1,...,5}
+	\node[fase2 neuron, right of=H4-3] (H5-\y) at (\layersep*7.5,-\y) {};
+	
+	% Draw the Dropout_3 layer nodes
+	\foreach \y in {1,...,5}
+	\node[fase2 neuron, right of=H5-3] (H6-\y) at (\layersep*9.1,-\y cm) {};
+	
+	% Draw the Dense_3 layer nodes
+	\node[output neuron, right of=H6-3] (H7-1) at (\layersep*10.8,-1 cm) {};
+	
+	% Connect every node in the input layer with every node in the
+	% LSTM layer.
+	\foreach \source in {1,...,7}
+	\foreach \dest in {1,...,7}
+	\path (I-\source) edge (H1-\dest);
+	% Connect every node in the LSTM layer with every node in the
+	% Dropout_1 layer.
+	\foreach \source in {1,...,7}
+	\foreach \dest in {1,...,6}
+	\path (H1-\source) edge (H2-\dest);
+	% Connect every node in the Dropout_1 layer with every node in the
+	% Dense_1 layer.
+	\foreach \source in {1,...,6}
+	\foreach \dest in {1,...,5}
+	\path (H2-\source) edge (H3-\dest);
+	% Connect every node in the Dense_1 layer with every node in the
+	% Dropout_2 layer.
+	\foreach \source in {1,...,5}
+	\foreach \dest in {1,...,5}
+	\path (H3-\source) edge (H4-\dest);
+	% Connect every node in the Dropout_2 layer with every node in the
+	% Dense_2 layer.
+	\foreach \source in {1,...,5}
+	\foreach \dest in {1,...,5}
+	\path (H4-\source) edge (H5-\dest);
+	% Connect every node in the Dense_2 layer with every node in the
+	% Dropout_3 layer.
+	\foreach \source in {1,...,5}
+	\foreach \dest in {1,...,5}
+	\path (H5-\source) edge (H6-\dest);
+	% Connect every node in the Dropout_3 layer with every node in the
+	% Dense_3 layer.
+	\foreach \source in {1,...,5}
+	\path (H6-\source) edge (H7-1);
+	
+	
+	% Annotate the layers
+	\node[annot,above of=H1-1, node distance=1cm] {LSTM layer};
+	\node[annot,above of=H2-1, node distance=1cm] {Dropout1 layer};
+	\node[annot,above of=H3-1, node distance=1cm] {Dense1 layer};
+	\node[annot,above of=H4-1, node distance=1cm] {Dropout2 layer};
+	\node[annot,above of=H5-1, node distance=1cm] {Dense2 layer};
+	\node[annot,above of=H6-1, node distance=1cm] {Dropout3 layer};
+	\node[annot,above of=I-1] {Input layer};
+	\node[annot,above of=H7-1] {Output layer};
+	
+\end{tikzpicture}

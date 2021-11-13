@@ -1,0 +1,63 @@
+\contentsline {chapter}{\numberline {1}Fundamentaci\'{o}n te\'{o}rica}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Preparaci\'{o}n de la miner\'{i}a de datos}{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Paso 1: Entendimiento, conocimientos previos e identificaci\'{o}n de la meta}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Paso 2: Selecci\'{o}n del conjunto de datos}{20}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Paso 3: Limpieza y preprocesamiento}{21}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}RandomUnderSampler}{21}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}RandomOverSampler}{21}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}SMOTE y ADASYN}{22}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Paso 4: Transformaci\'{o}n de los datos}{22}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Paso 5: M\'{e}todo de miner\'{i}a de datos}{24}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Paso 6 y 7: Elecci\'{o}n e implementaci\'{o}n de los algoritmos de miner\'{i}a de datos}{24}{section.2.5}%
+\contentsline {subsubsection}{N\'{u}mero y tama\~{n}o de capas}{26}{section*.3}%
+\contentsline {subsubsection}{Ratio de aprendizaje}{26}{section*.4}%
+\contentsline {subsubsection}{Algoritmo de optimizaci\'{o}n}{26}{section*.5}%
+\contentsline {subsubsection}{Regularizaci\'{o}n}{26}{section*.6}%
+\contentsline {subsubsection}{AutoEncoder (AE)}{27}{section*.7}%
+\contentsline {subsubsection}{Denoising AutoEncoder (DAE)}{28}{section*.8}%
+\contentsline {subsubsection}{Convolutional Neural Network (CNN)}{29}{section*.9}%
+\contentsline {subsubsection}{Backpropagation Neural Network (BPNN)}{31}{section*.10}%
+\contentsline {subsubsection}{Recurrent Neural Network (RNN)}{32}{section*.11}%
+\contentsline {subsubsection}{Long Short Term Memory (LSTM)}{34}{section*.12}%
+\contentsline {chapter}{\numberline {3}Evaluaci\'{o}n y aplicaci\'{o}n de los modelos DL}{38}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Experimento 1: Comparaci\'{o}n entre la selecci\'{o}n de datos para las pruebas}{38}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Experimento 2: Comparaci\'{o}n entre los modelos de ML por estrategias para solucionar al desbalance de la informaci\'{o}n}{39}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimento 3: Comparaci\'{o}n en el orden de los \textit {dropout} con datos desbalanceados}{41}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Experimento 4: Comparaci\'{o}n en los modelos DL teniendo en cuenta los resultados de las pruebas.}{43}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Primera parte: Modelos por epochs con la misma estrategia.}{43}{subsection.3.4.1}%
+\contentsline {subsubsection}{Datos desbalanceados}{43}{section*.13}%
+\contentsline {subsubsection}{UnderSampler}{44}{section*.14}%
+\contentsline {subsubsection}{OverSampler}{45}{section*.15}%
+\contentsline {subsubsection}{SMOTE}{46}{section*.16}%
+\contentsline {subsubsection}{ADASYN}{47}{section*.17}%
+\contentsline {subsection}{\numberline {3.4.2}An\'{a}lisis de la primera parte}{48}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Segunda parte: Estrategias y epochs por modelos}{49}{subsection.3.4.3}%
+\contentsline {subsubsection}{CNN}{49}{section*.18}%
+\contentsline {subsubsection}{AE}{50}{section*.19}%
+\contentsline {subsection}{\numberline {3.4.4}An\'{a}lisis de la segunda parte}{51}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}An\'{a}lisis general del experimento 4}{51}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Experimento 5: Comparaci\'{o}n de los modelos DL teniendo en cuenta los resultados del entrenamiento}{52}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Primera parte: Modelos por epochs con la misma estrategia}{52}{subsection.3.5.1}%
+\contentsline {subsubsection}{Datos desbalanceados}{52}{section*.20}%
+\contentsline {subsubsection}{UnderSampler}{53}{section*.21}%
+\contentsline {subsubsection}{OverSampler}{54}{section*.22}%
+\contentsline {subsubsection}{SMOTE}{55}{section*.23}%
+\contentsline {subsubsection}{ADASYN}{56}{section*.24}%
+\contentsline {subsection}{\numberline {3.5.2}An\'{a}lisis de la primera parte}{57}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Segunda parte: Estrategias y epochs por modelos}{57}{subsection.3.5.3}%
+\contentsline {subsubsection}{CNN}{57}{section*.25}%
+\contentsline {subsubsection}{AE}{58}{section*.26}%
+\contentsline {subsubsection}{DAE}{59}{section*.27}%
+\contentsline {subsubsection}{RNN}{60}{section*.28}%
+\contentsline {subsubsection}{LSTM}{60}{section*.29}%
+\contentsline {subsubsection}{BPNN}{61}{section*.30}%
+\contentsline {subsection}{\numberline {3.5.4}An\'{a}lisis de la segunda parte}{62}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}An\'{a}lisis general del experimento 5}{63}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}An\'{a}lisis de los resultados de los experimentos 4 y 5}{63}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Experimento 6: Comparaci\'{o}n entre los mejores modelos ML y DL, en cuanto a los resultados de las pruebas}{64}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Experimento 7: Comparaci\'{o}n de todos los modelos ML y DL en el resultado de las pruebas}{65}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Resultados de la evaluaci\'{o}n}{69}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Parte 9: Aplicaci\'{o}n del conocimiento adquirido}{71}{section.3.10}%
+\contentsline {subsection}{\numberline {3.10.1}Componentes de las soluciones al desbalance}{71}{subsection.3.10.1}%
+\contentsline {subsection}{\numberline {3.10.2}Componentes de los modelos ML y DL}{73}{subsection.3.10.2}%
+\contentsline {subsection}{\numberline {3.10.3}Integraci\'{o}n de los componentes}{73}{subsection.3.10.3}%

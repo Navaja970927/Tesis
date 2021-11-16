@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.13)  15 OCT 2021 14:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.13)  15 NOV 2021 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -751,22 +751,22 @@ Package pdftex.def Info: UCI.png  used on input line 3.
 \openout2 = `resumen.aux'.
 
  (./resumen.tex
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 12--28
+Underfull \hbox (badness 10000) in paragraph at lines 14--28
 
  []
 
@@ -2148,7 +2148,7 @@ ist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2021/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 /cm-super/sfrm1200.pfb>
-Output written on principal.pdf (110 pages, 6728770 bytes).
+Output written on principal.pdf (110 pages, 6731331 bytes).
 PDF statistics:
  1426 PDF objects out of 1440 (max. 8388607)
  1136 compressed objects within 12 object streams
